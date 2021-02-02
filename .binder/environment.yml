@@ -1,0 +1,17 @@
+channels:
+  - conda-forge
+  - nodefaults
+
+dependencies:
+  - jupyterlab ==3.*
+  - nodejs >=14,<15
+  - python >=3.9,<3.10
+  # qa
+  - twine
+  - pip
+  - black
+  - isort
+  - flake8
+  - pyflakes
+  - wheel
+

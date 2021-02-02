@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+doit
+
+jupyter labextension uninstall --no-build jupyter-offlinenotebook || echo "ok"
+jupyter labextension list

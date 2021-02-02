@@ -1,0 +1,10 @@
+__pycache__/
+.doit*
+.venv/
+.yarn-packages/
+**/node_modules/
+build/
+dist/
+lib/
+node_modules/
+py_src/jupyterlab_gt_coar_theme/labextension/

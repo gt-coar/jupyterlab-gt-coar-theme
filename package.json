@@ -1,0 +1,70 @@
+{
+  "name": "@gt-coar/jupyterlab-theme",
+  "version": "0.1.0",
+  "description": "an unofficial Georgia Tech theme for JupyterLab",
+  "dependencies": {
+    "@jupyterlab/application": "3"
+  },
+  "keywords": [
+    "jupyter",
+    "jupyterlab",
+    "jupyterlab-extension",
+    "georgia-tech"
+  ],
+  "homepage": "https://github.com/gt-coar/jupyterlab-gt-coar-theme",
+  "bugs": {
+    "url": "https://github.com/gt-coar/jupyterlab-gt-coar-theme/issues"
+  },
+  "license": "BSD-3-Clause",
+  "author": {
+    "name": "jupyterlab-gt-coar-theme contributors",
+    "email": "coar@gaetch.edu"
+  },
+  "devDependencies": {
+    "@jupyterlab/builder": "^3.0.2",
+    "prettier": "^2.2.1"
+  },
+  "files": [
+    "{lib,style,src}/**/*.{.ts,eot,gif,html,jpg,js,js.map,json,png,svg,woff2,ttf,css}",
+    "LICENSE.txt"
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "style": "style/index.css",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gt-coar/jupyterlab-gt-coar-theme"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "proseWrap": "always",
+    "printWidth": 88
+  },
+  "scripts": {
+    "bootstrap": "jlpm --prefer-offline --ignore-optional --ignore-scripts && jlpm clean && jlpm lint && jlpm build",
+    "build": "jlpm build:ts && jlpm build:ext",
+    "build:ts": "tsc -b",
+    "build:ext": "jupyter labextension build .",
+    "clean": "rimraf ./lib ./py_src/jupyterlab_gt_coar_theme/labextension",
+    "watch": "jlpm build:ts --watch --preserveWatchOutput",
+    "lint": "jlpm lint:prettier",
+    "lint:prettier": "prettier --write --list-different \"*.{json,yml,md}\" \"{py_src,src,.github}/**/*.{ts,tsx,js,jsx,css,json,md,yml}\""
+  },
+  "sideEffects": [
+    "style/*.css"
+  ],
+  "jupyterlab": {
+    "themePath": "style/index.css",
+    "discovery": {
+      "server": {
+        "base": {
+          "name": "jupyterlab-gt-coar-theme"
+        },
+        "managers": [
+          "pip"
+        ]
+      }
+    },
+    "outputDir": "py_src/jupyterlab_gt_coar_theme/labextension"
+  }
+}
