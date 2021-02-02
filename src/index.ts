@@ -1,7 +1,7 @@
 import { JupyterFrontEnd, JupyterFrontEndPlugin } from '@jupyterlab/application';
 import { IThemeManager } from '@jupyterlab/apputils';
 
-const NAME = '@gt-coar/jupyterlab-theme'
+const NAME = '@gt-coar/jupyterlab-theme';
 const VARIANTS = ['light', 'dark'];
 
 function makeTheme(variant: string): JupyterFrontEndPlugin<void> {
@@ -16,13 +16,12 @@ function makeTheme(variant: string): JupyterFrontEndPlugin<void> {
         name: `GT COAR (${variant[0]})`,
         isLight: true,
         load: () => manager.loadCSS(style),
-        unload: () => Promise.resolve(undefined)
+        unload: () => Promise.resolve(undefined),
       });
-    }
-  }
+    },
+  };
 }
 
 const extensions = VARIANTS.map(makeTheme);
 
 export default extensions;
-
