@@ -50,6 +50,14 @@ def task_build():
         targets=[P.EXT_PKG],
     )
 
+    for cmd, dist in D.PY_DIST_CMD.items():
+        yield dict(
+            name=cmd,
+            actions=[["python", "setup.py", cmd]],
+            file_dep=[*P.ALL_PY_SRC, P.EXT_PKG, P.README, P.LICENSE, P.MANIFEST],
+            targets=[dist],
+        )
+
 
 def task_lab():
     """start jupyterlab"""
@@ -64,6 +72,7 @@ def task_lint():
         actions=[
             ["isort", *P.ALL_PY],
             ["black", "--quiet", *P.ALL_PY],
+            ["pyflakes", *P.ALL_PY],
         ],
     )
 
@@ -85,6 +94,7 @@ class P:
 
     SETUP_PY = ROOT / "setup.py"
     SETUP_CFG = ROOT / "setup.cfg"
+    MANIFEST = ROOT / "MANIFEST.in"
 
     PKG_JSON = ROOT / "package.json"
     TSCONFIG = ROOT / "tsconfig.json"
@@ -100,6 +110,8 @@ class P:
     ALL_PY_SRC = sorted(PY_SRC.rglob("*.py"))
     ALL_PY = [*ALL_PY_SRC, DODO]
     ALL_JSON = sorted(ROOT.glob("*.json"))
+    README = ROOT / "README.md"
+    LICENSE = ROOT / "LICENSE.txt"
     ALL_MD = sorted(ROOT.glob("*.md"))
     ALL_PRETTIER = [*ALL_MD, *ALL_STYLE, *ALL_JSON]
 
@@ -110,3 +122,9 @@ class D:
     """data"""
 
     PKG = json.loads(P.PKG_JSON.read_text(encoding="utf-8"))
+    PY_NAME = PKG["jupyterlab"]["discovery"]["server"]["base"]["name"]
+    SDIST = P.DIST / ("{}-{}.tar.gz".format(PY_NAME, PKG["version"]))
+    WHEEL = P.DIST / (
+        "{}-{}-py3-none-any.whl".format(PY_NAME.replace("-", "_"), PKG["version"])
+    )
+    PY_DIST_CMD = {"sdist": SDIST, "bdist_wheel": WHEEL}

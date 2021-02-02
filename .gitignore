@@ -8,3 +8,4 @@ dist/
 lib/
 node_modules/
 py_src/jupyterlab_gt_coar_theme/labextension/
+*.egg-info

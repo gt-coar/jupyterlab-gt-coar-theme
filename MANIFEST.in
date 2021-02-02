@@ -1,7 +1,7 @@
-include LICENSE.txt README.md
+include LICENSE.txt
 recursive-include py_src/jupyterlab_gt_coar_theme/labextension *.*
 
-exclude src lib docs examples package.json scripts
+exclude src lib package.json
 
 global-exclude *~
 global-exclude *.pyc

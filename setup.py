@@ -1,8 +1,9 @@
-# Copyright (c) 2021 jupyterlab-gt-coar-theme contributors.
+# Copyright 2021 University System of Georgia and jupyterlab-gt-coar-theme contributors
 # Distributed under the terms of the Modified BSD License.
 
 import re
 from pathlib import Path
+import json
 
 import setuptools
 
@@ -10,7 +11,7 @@ HERE = Path(__file__).parent
 MOD = "jupyterlab_gt_coar_theme"
 EXT = HERE / "py_src" / MOD / "labextension"
 PKG_JSON = EXT / "package.json"
-PKG = json.loads(PKG.read_text(encoding="utf-8"))
+PKG = json.loads(PKG_JSON.read_text(encoding="utf-8"))
 
 SHARE = f"""share/jupyter/labextensions/{PKG["name"]}"""
 EXT_FILES = {SHARE: ["install.json"]}
