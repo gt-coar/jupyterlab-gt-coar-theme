@@ -42,8 +42,8 @@
   },
   "scripts": {
     "bootstrap": "jlpm --prefer-offline --ignore-optional --ignore-scripts && jlpm clean && jlpm lint && jlpm build",
-    "build": "jlpm build:ts && jlpm build:ext",
-    "build:ts": "tsc -b",
+    "build": "jlpm build:lib && jlpm build:ext",
+    "build:lib": "tsc -b",
     "build:ext": "jupyter labextension build .",
     "clean": "rimraf ./lib ./py_src/jupyterlab_gt_coar_theme/labextension",
     "watch": "jlpm build:ts --watch --preserveWatchOutput",

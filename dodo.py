@@ -35,6 +35,22 @@ def task_setup():
     )
 
 
+def task_build():
+    yield dict(
+        name="lib",
+        file_dep=[P.YARN_INTEGRITY, *P.ALL_TS_SRC, P.PKG_JSON, P.TSCONFIG],
+        actions=[["jlpm", "build:lib"]],
+        targets=[P.TSBUILD],
+    )
+
+    yield dict(
+        name="ext",
+        actions=[["jupyter", "labextension", "build", "."]],
+        file_dep=[P.TSBUILD],
+        targets=[P.EXT_PKG],
+    )
+
+
 def task_lab():
     """start jupyterlab"""
     return dict(actions=[["jupyter", "lab", "--no-browser", "--debug"]])
@@ -64,24 +80,28 @@ class P:
     DODO = Path(__file__)
     ROOT = DODO.parent
 
-    PKG_JSON = ROOT / "package.json"
+    BUILD = ROOT / "build"
+    DIST = ROOT / "dist"
 
     SETUP_PY = ROOT / "setup.py"
     SETUP_CFG = ROOT / "setup.cfg"
 
+    PKG_JSON = ROOT / "package.json"
+    TSCONFIG = ROOT / "tsconfig.json"
+    TSBUILD = BUILD / "tsconfig.tsbuildinfo"
     PY_SRC = ROOT / "py_src/jupyterlab_gt_coar_theme"
+    EXT_DIST = PY_SRC / "labextension"
+    EXT_PKG = EXT_DIST / "package.json"
     TS_SRC = ROOT / "src"
     STYLE = ROOT / "style"
+    ALL_STYLE = [*STYLE.rglob("*.css"), *STYLE.rglob("*.svg")]
 
     ALL_TS_SRC = sorted(TS_SRC.rglob("*.ts"))
     ALL_PY_SRC = sorted(PY_SRC.rglob("*.py"))
     ALL_PY = [*ALL_PY_SRC, DODO]
-    ALL_PRETTIER = [
-        PKG_JSON,
-        *ROOT.glob("*.json"),
-        *ROOT.glob("*.md"),
-        *STYLE.rglob("*.css"),
-    ]
+    ALL_JSON = sorted(ROOT.glob("*.json"))
+    ALL_MD = sorted(ROOT.glob("*.md"))
+    ALL_PRETTIER = [*ALL_MD, *ALL_STYLE, *ALL_JSON]
 
     YARN_INTEGRITY = ROOT / "node_modules/.yarn-integrity"
 
