@@ -1,11 +1,14 @@
 __pycache__/
 .doit*
+.ipynb_checkpoints/
 .venv/
 .yarn-packages/
+*.egg-info
 **/node_modules/
 build/
 dist/
+labextension/
 lib/
 node_modules/
-py_src/jupyterlab_gt_coar_theme/labextension/
-*.egg-info
+untitled*
+Untitled*

@@ -1,0 +1,71 @@
+@import './fonts.css';
+
+:root {
+  /* lifted from site */
+  --gt-black: #262626;
+  --gt-white: #ffffff;
+  --gt-buzz-gold: #eeb211;
+  --gt-gold: #b3a369;
+  --gt-tech-gold: #b3a369;
+  --gt-gold-grad-1: #bfb37c;
+  --gt-tech-light-gold: #bfb37c;
+  --gt-mdlt-gold: #ac9a58;
+  --gt-md-gold: #a4925a;
+  --gt-tech-medium-gold: #a4925a;
+  --gt-drk-gold: #857437;
+  --gt-tech-dark-gold: #857437;
+  --gt-navy: #003057;
+  --gt-blue: #004f9f;
+  --gt-link-blue: #004f9f;
+  --gt-blue-visited: #1879db;
+  --gt-blue-hover: #1879db;
+  --gt-link-hover-blue: #1879db;
+  --gt-text-black: #262626;
+  --gt-warm-gray: #d6dbd4;
+  --gt-warm-grey: #d6dbd4;
+  --gt-warm-gray-medium: #e5e7e4;
+  --gt-warm-grey-medium: #e5e7e4;
+  --gt-superlight-gray: #f2f2f2;
+  --gt-superlight-grey: #f2f2f2;
+  --gt-light-gray: #ccc;
+  --gt-light-grey: #ccc;
+  --gt-warm-gray-light: #f2f3f1;
+  --gt-warm-grey-light: #f2f3f1;
+  --gt-md-grey: #545454;
+  --gt-medium-gray-light: #545454;
+  --gt-medium-grey-light: #545454;
+  --gt-mddk-grey: #8a8a8a;
+  --gt-dark-gray: #3b3b3b;
+  --gt-dark-grey: #3b3b3b;
+  --gt-drk-grey: #3b3b3b;
+  --gt-pimile-light: #f2f3f1;
+  --gt-horizon: #f95e10;
+
+  /* from brand guidelines */
+  --gt-blue: #003057;
+  --gt-blue-80: #335161;
+  --gt-blue-link: #004f9f;
+  --gt-blue-link-hover: #1879db;
+  --gt-grey-light: #e5e5e5;
+  --gt-gold-buzz: #eaaa00;
+  --gt-gold-buzz-60: #f5d580;
+  --gt-tertiary-gray-matter: #54585a;
+  --gt-tertiary-atlanta-fog: #002233;
+  --gt-tertiary-mortar: #8e8b76;
+  --gt-tertiary-pi-mile: #d6dbd4;
+  --gt-tertiary-diploma: #f9f6e5;
+  --gt-tertiary-tower-patina: #4b8b9b;
+  --gt-tertiary-bobby-jones: #377117;
+  --gt-tertiary-burger-bowl: #b7c42f;
+  --gt-tertiary-the-whistle: #740053;
+  --gt-tertiary-georgia-clay: #ad4025;
+  --gt-tertiary-horizon: #f95e10;
+  --gt-font-fallback: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  --gt-font-primary: 'Roboto', var(--gt-font-fallback);
+  --gt-font-secondary: 'Roboto Slab', var(--gt-font-fallback);
+  --gt-font-mono: 'Roboto Mono', var(--jp-code-font-family-default);
+
+  /* thwg */
+  --thwg: #ba0c2f;
+}

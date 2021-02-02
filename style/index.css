@@ -3,24 +3,135 @@
 | Distributed under the terms of the Modified BSD License.
 */
 
-@import "./variables.css";
-@import "./gt.css";
+@import './variables.css';
+@import './brand.css';
 
-/* Set the default typography for monospace elements */
-tt,
-code,
-kbd,
-samp,
-pre {
+/* variables */
+[data-jp-theme-name*='GT COAR'] {
+  --jp-brand-color1: var(--gt-blue-link);
+  --jp-layout-color0: var(--gt-white);
+  --jp-layout-color1: var(--gt-superlight-grey);
+  --jp-layout-color2: var(--gt-light-grey);
+  --jp-layout-color3: var(--gt-warm-grey);
+  --jp-inverse-layout-color3: var(--gt-blue-80);
+  --jp-warn-color0: var(--gt-tertiary-horizon);
+  --jp-icon-contrast-color0: var(--gt-tertiary-the-whistle);
+  --jp-content-line-height: 2;
+  --jp-content-font-family: var(--gt-font-primary);
+  --jp-ui-font-family: var(--gt-font-primary);
+  --jp-code-font-family: var(--gt-font-mono);
+  --jp-ui-font-size1: 15px;
+  --jp-ui-font-size0: 14px;
+  --jp-content-font-size1: 15px;
+  --jp-content-font-size5: 32px;
+
+  /* code */
+  --jp-mirror-editor-header-color: var(--gt-blue);
+  --jp-mirror-editor-keyword-color: var(--gt-tertiary-bobby-jones);
+  --jp-mirror-editor-def-color: var(--gt-blue-link);
+  --jp-mirror-editor-error-color: var(--thwg);
+  --jp-mirror-editor-quote-color: var(--gt-tertiary-bobby-jones);
+}
+
+/* code */
+[data-jp-theme-name*='GT COAR'] tt,
+[data-jp-theme-name*='GT COAR'] code,
+[data-jp-theme-name*='GT COAR'] kbd,
+[data-jp-theme-name*='GT COAR'] samp,
+[data-jp-theme-name*='GT COAR'] pre {
   font-family: var(--jp-code-font-family);
   font-size: var(--jp-code-font-size);
   line-height: var(--jp-code-line-height);
 }
 
-:root {
-    --jp-brand-color1: var(--gt-blue);
-    --jp-layout-color3: var(--gt-grey-light);
-    --jp-inverse-layout-color3: var(--gt-tertiary-mortar);
-    --jp-warn-color0: var(--gt-tertiary-horizon);
-    --jp-icon-contrast-color0: var(--gt-tertiary-the-whistle);
+/* headings */
+[data-jp-theme-name*='GT COAR'] h1,
+[data-jp-theme-name*='GT COAR'] h2,
+[data-jp-theme-name*='GT COAR'] h3,
+[data-jp-theme-name*='GT COAR'] h4,
+[data-jp-theme-name*='GT COAR'] h5,
+[data-jp-theme-name*='GT COAR'] h6 {
+  font-family: var(--gt-font-secondary);
+  font-weight: 700;
+  color: var(--gt-blue);
+}
+
+/* tabs */
+[data-jp-theme-name*='GT COAR'] .lm-DockPanel-tabBar .lm-TabBar-tab.lm-mod-current {
+  background-color: var(--jp-layout-color0);
+}
+[data-jp-theme-name*='GT COAR']
+  .lm-DockPanel-tabBar
+  .lm-TabBar-tab.lm-mod-current.jp-mod-active {
+  font-weight: 700;
+}
+
+/* buttons */
+[data-jp-theme-name*='GT COAR'] button.jp-mod-styled.jp-mod-accept {
+  background-color: var(--gt-blue-80);
+  color: var(--gt-gold-buzz-60);
+}
+
+[data-jp-theme-name*='GT COAR'] button.jp-mod-styled.jp-mod-accept:hover,
+[data-jp-theme-name*='GT COAR'] button.jp-mod-styled.jp-mod-accept:active {
+  background-color: var(--gt-blue-link-hover);
+  color: var(--gt-white);
+}
+
+/* menu */
+[data-jp-theme-name*='GT COAR'] #jp-MainLogo {
+  background-image: url('./img/wordmark.svg');
+  background-size: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-jp-theme-name*='GT COAR'] #jp-MainLogo g {
+  visibility: hidden;
+}
+
+[data-jp-theme-name*='GT COAR'] #jp-top-panel,
+[data-jp-theme-name*='GT COAR'] #jp-menu-panel,
+[data-jp-theme-name*='GT COAR'] .lm-MenuBar {
+  background-color: var(--gt-tertiary-atlanta-fog);
+}
+
+[data-jp-theme-name*='GT COAR'] #jp-title-panel-title h1 {
+  color: var(--gt-gold-buzz);
+}
+
+[data-jp-theme-name*='GT COAR'] .lm-MenuBar-item.lm-mod-active {
+  background-color: var(--gt-blue-link-hover);
+  color: var(--gt-superlight-grey);
+}
+
+[data-jp-theme-name*='GT COAR'] .lm-MenuBar {
+  color: var(--gt-superlight-grey);
+}
+
+[data-jp-theme-name*='GT COAR']
+  .lm-MenuBar.lm-mod-active
+  .lm-MenuBar-item.lm-mod-active {
+  background-color: var(--gt-blue-link-hover);
+  color: var(--gt-superlight-grey);
+  border-color: transparent;
+}
+
+/* commands */
+
+[data-jp-theme-name*='GT COAR'] .lm-CommandPalette-wrapper::after {
+  background-color: var(--gt-gold-buzz-60);
+}
+
+/* files */
+[data-jp-theme-name*='GT COAR'] .jp-DirListing-item.jp-mod-selected {
+  font-weight: 700;
+}
+
+/* simple */
+[data-jp-theme-name*='GT COAR']
+  .jp-LabShell[data-shell-mode='single-document']
+  .lm-MenuBar.lm-mod-active
+  .lm-MenuBar-item.lm-mod-active {
+  border-top: var(--jp-border-width) solid var(--gt-gold-buzz);
 }

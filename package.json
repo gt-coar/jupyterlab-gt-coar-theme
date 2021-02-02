@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "description": "an unofficial Georgia Tech theme for JupyterLab",
   "dependencies": {
-    "@jupyterlab/application": "3",
     "@fontsource/roboto": "~4.1.0",
-    "@fontsource/roboto-slab": "~4.1.1"
+    "@fontsource/roboto-slab": "~4.1.1",
+    "@jupyterlab/application": "3"
   },
   "keywords": [
     "jupyter",
@@ -23,14 +23,11 @@
     "email": "coar@gaetch.edu"
   },
   "devDependencies": {
+    "@fontsource/roboto-mono": "^4.1.1",
     "@jupyterlab/builder": "^3.0.2",
     "base64-inline-loader": "^1.1.1",
-    "css-loader": "^5.0.1",
-    "mini-css-extract-plugin": "^1.3.3",
     "prettier": "^2.2.1",
-    "typescript": "~4.1.3",
-    "webpack": "^5.11.1",
-    "webpack-cli": "^4.3.1"
+    "typescript": "~4.1.3"
   },
   "files": [
     "{lib,style,src}/**/*.{.ts,eot,gif,html,jpg,js,js.map,json,png,svg,woff2,ttf,css}",
@@ -56,10 +53,10 @@
     "clean": "rimraf ./lib ./py_src/jupyterlab_gt_coar_theme/labextension",
     "watch:lib": "jlpm build:lib --watch --preserveWatchOutput",
     "lint": "jlpm lint:prettier",
-    "lint:prettier": "prettier --write --list-different \"*.{json,yml,md}\" \"{py_src,src,.github}/**/*.{ts,tsx,js,jsx,css,json,md,yml}\""
+    "lint:prettier": "prettier --write --list-different \"*.{json,yml,md}\" \"{py_src,src,.github,style}/**/*.{ts,tsx,js,jsx,css,json,md,yml}\""
   },
   "sideEffects": [
-    "lib/*.css"
+    "style/*.css"
   ],
   "jupyterlab": {
     "themePath": "style/index.css",

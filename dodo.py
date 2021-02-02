@@ -45,17 +45,10 @@ def task_build():
         targets=[P.TSBUILD, P.PLUGIN_JS],
     )
 
-    # yield dict(
-    #     name="webpack",
-    #     file_dep=[P.TSBUILD, P.PLUGIN_JS, *P.ALL_STYLE, P.WEBPACK_JS],
-    #     actions=[["jlpm", "build:webpack"]],
-    #     targets=[P.INDEX_CSS],
-    # )
-
     yield dict(
         name="ext",
         actions=[[*C.LAB_EXT, "build", "--debug", "."]],
-        file_dep=[P.TSBUILD, P.WEBPACK_JS],
+        file_dep=[P.TSBUILD],
         targets=[P.EXT_PKG],
     )
 
