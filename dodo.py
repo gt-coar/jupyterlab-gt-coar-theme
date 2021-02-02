@@ -45,7 +45,7 @@ def task_build():
 
     yield dict(
         name="ext",
-        actions=[["jupyter", "labextension", "build", "."]],
+        actions=[[C.LAB_EXT, "build", "."]],
         file_dep=[P.TSBUILD],
         targets=[P.EXT_PKG],
     )
@@ -53,15 +53,44 @@ def task_build():
     for cmd, dist in D.PY_DIST_CMD.items():
         yield dict(
             name=cmd,
-            actions=[["python", "setup.py", cmd]],
+            actions=[[*C.SETUP, cmd]],
             file_dep=[*P.ALL_PY_SRC, P.EXT_PKG, P.README, P.LICENSE, P.MANIFEST],
             targets=[dist],
         )
 
 
-def task_lab():
+def task_dev():
     """start jupyterlab"""
-    return dict(actions=[["jupyter", "lab", "--no-browser", "--debug"]])
+    yield dict(
+        name="py",
+        actions=[
+            [
+                *C.PIP,
+                "install",
+                "-e",
+                ".",
+                "--no-deps",
+                "--ignore-installed",
+            ]
+        ],
+        file_dep=[P.EXT_PKG],
+    )
+
+    yield dict(
+        name="ext",
+        actions=[[*C.LAB_EXT, "develop", "--overwrite", "."]],
+        task_dep=["dev:py"],
+    )
+
+
+def task_lab():
+    """"""
+    yield dict(
+        name="start",
+        uptodate=[lambda: False],
+        task_dep=["dev:ext"],
+        actions=[[*C.LAB, "--no-browser", "--debug"]],
+    )
 
 
 def task_lint():
@@ -128,3 +157,14 @@ class D:
         "{}-{}-py3-none-any.whl".format(PY_NAME.replace("-", "_"), PKG["version"])
     )
     PY_DIST_CMD = {"sdist": SDIST, "bdist_wheel": WHEEL}
+
+
+class C:
+    """commands"""
+
+    PYM = ["python", "-m"]
+    PIP = [*PYM, "pip"]
+    JP = ["jupyter"]
+    LAB_EXT = [*JP, "labextension"]
+    LAB = [*JP, "lab"]
+    SETUP = ["python", "setup.py"]
