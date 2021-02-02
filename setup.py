@@ -29,7 +29,7 @@ for ext_path in [EXT] + [d for d in EXT.rglob("*") if d.is_dir()]:
 
 SETUP_ARGS = dict(
     name=PKG["jupyterlab"]["discovery"]["server"]["base"]["name"],
-    descrtiption=PKG["description"],
+    description=PKG["description"],
     version=PKG["version"],
     url=PKG["homepage"],
     license=PKG["license"],

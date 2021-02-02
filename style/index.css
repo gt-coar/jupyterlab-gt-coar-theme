@@ -3,7 +3,8 @@
 | Distributed under the terms of the Modified BSD License.
 */
 
-@import './variables.css';
+@import "./variables.css";
+@import "./gt.css";
 
 /* Set the default typography for monospace elements */
 tt,
@@ -14,4 +15,12 @@ pre {
   font-family: var(--jp-code-font-family);
   font-size: var(--jp-code-font-size);
   line-height: var(--jp-code-line-height);
+}
+
+:root {
+    --jp-brand-color1: var(--gt-blue);
+    --jp-layout-color3: var(--gt-grey-light);
+    --jp-inverse-layout-color3: var(--gt-tertiary-mortar);
+    --jp-warn-color0: var(--gt-tertiary-horizon);
+    --jp-icon-contrast-color0: var(--gt-tertiary-the-whistle);
 }

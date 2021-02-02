@@ -1,14 +1,14 @@
 import json
 import os
+import subprocess
 from pathlib import Path
 
-from doit.tools import config_changed
+from doit.tools import PythonInteractiveAction, config_changed
 
 os.environ.update(
     NODE_OPTS="--max-old-space-size=4096",
     PYTHONIOENCODING="utf-8",
     PIP_DISABLE_PIP_VERSION_CHECK="1",
-    MAMBA_NO_BANNER="1",
 )
 
 DOIT_CONFIG = {
@@ -28,7 +28,9 @@ def task_setup():
     yield dict(
         name="js",
         uptodate=[
-            config_changed(dict({k: D.PKG[k] for k in D.PKG if "ependencies" in k}))
+            config_changed(
+                dict({k: D.PKG[k] for k in D.PKG if "dependencies" in k.lower()})
+            )
         ],
         actions=[["jlpm", "--prefer-offline"]],
         targets=[P.YARN_INTEGRITY],
@@ -40,13 +42,20 @@ def task_build():
         name="lib",
         file_dep=[P.YARN_INTEGRITY, *P.ALL_TS_SRC, P.PKG_JSON, P.TSCONFIG],
         actions=[["jlpm", "build:lib"]],
-        targets=[P.TSBUILD],
+        targets=[P.TSBUILD, P.PLUGIN_JS],
     )
+
+    # yield dict(
+    #     name="webpack",
+    #     file_dep=[P.TSBUILD, P.PLUGIN_JS, *P.ALL_STYLE, P.WEBPACK_JS],
+    #     actions=[["jlpm", "build:webpack"]],
+    #     targets=[P.INDEX_CSS],
+    # )
 
     yield dict(
         name="ext",
-        actions=[[C.LAB_EXT, "build", "."]],
-        file_dep=[P.TSBUILD],
+        actions=[[*C.LAB_EXT, "build", "--debug", "."]],
+        file_dep=[P.TSBUILD, P.WEBPACK_JS],
         targets=[P.EXT_PKG],
     )
 
@@ -54,7 +63,15 @@ def task_build():
         yield dict(
             name=cmd,
             actions=[[*C.SETUP, cmd]],
-            file_dep=[*P.ALL_PY_SRC, P.EXT_PKG, P.README, P.LICENSE, P.MANIFEST],
+            file_dep=[
+                *P.ALL_PY_SRC,
+                P.EXT_PKG,
+                P.README,
+                P.LICENSE,
+                P.MANIFEST,
+                P.SETUP_PY,
+                P.SETUP_CFG,
+            ],
             targets=[dist],
         )
 
@@ -93,6 +110,38 @@ def task_lab():
     )
 
 
+def task_watch():
+    """watch typescript sources, rebuilding as files change"""
+
+    def _watch():
+        watchers = [
+            subprocess.Popen(args)
+            for args in [
+                ["jlpm", "watch:lib"],
+                # ["jlpm", "watch:webpack"],
+                [*C.LAB_EXT, "watch", "."],
+            ]
+        ]
+
+        def stop():
+            [w.terminate() for w in watchers]
+            [w.wait() for w in watchers]
+
+        try:
+            watchers[0].wait()
+        except KeyboardInterrupt:
+            pass
+        finally:
+            stop()
+        return True
+
+    return dict(
+        uptodate=[lambda: False],
+        task_dep=["dev:ext"],
+        actions=[PythonInteractiveAction(_watch)],
+    )
+
+
 def task_lint():
     """apply source formatting and linting"""
     yield dict(
@@ -120,6 +169,7 @@ class P:
 
     BUILD = ROOT / "build"
     DIST = ROOT / "dist"
+    LIB = ROOT / "lib"
 
     SETUP_PY = ROOT / "setup.py"
     SETUP_CFG = ROOT / "setup.cfg"
@@ -145,6 +195,9 @@ class P:
     ALL_PRETTIER = [*ALL_MD, *ALL_STYLE, *ALL_JSON]
 
     YARN_INTEGRITY = ROOT / "node_modules/.yarn-integrity"
+    WEBPACK_JS = ROOT / "webpack.config.js"
+    INDEX_CSS = LIB / "index.css"
+    PLUGIN_JS = LIB / "index.js"
 
 
 class D:

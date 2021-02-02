@@ -21,5 +21,5 @@
     "types": [],
     "tsBuildInfoFile": "build/tsconfig.tsbuildinfo"
   },
-  "include": ["src/*"]
+  "include": ["src/**/*"]
 }
