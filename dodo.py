@@ -10,7 +10,7 @@ from datetime import datetime
 from hashlib import sha256
 from pathlib import Path
 
-from doit.tools import CmdAction, PythonInteractiveAction, config_changed
+from doit import tools
 
 os.environ.update(
     NODE_OPTS="--max-old-space-size=4096",
@@ -35,7 +35,7 @@ def task_setup():
     yield dict(
         name="js",
         uptodate=[
-            config_changed(
+            tools.config_changed(
                 dict({k: D.PKG[k] for k in D.PKG if "dependencies" in k.lower()})
             )
         ],
@@ -62,7 +62,10 @@ def task_build():
     yield dict(
         name="tgz",
         file_dep=[P.TSBUILD, *P.ALL_STYLE, P.PKG_JSON, P.README, P.LICENSE],
-        actions=[CmdAction([*C.NPM_PACK, ".."], cwd=P.DIST, shell=False)],
+        actions=[
+            (tools.create_folder, [P.DIST]),
+            tools.CmdAction([*C.NPM_PACK, ".."], cwd=P.DIST, shell=False),
+        ],
         targets=[D.NPM_TGZ],
     )
 
@@ -144,7 +147,7 @@ def task_watch():
     return dict(
         uptodate=[lambda: False],
         task_dep=["dev:ext"],
-        actions=[PythonInteractiveAction(_watch)],
+        actions=[tools.PythonInteractiveAction(_watch)],
     )
 
 
