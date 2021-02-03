@@ -7,6 +7,11 @@
 
 > an unoffical Georgia Tech theme for JupyterLab 3
 
+![a screenshot of the theme][screenshot]
+
+[screenshot]:
+  https://user-images.githubusercontent.com/7581399/106806206-a6a40900-6635-11eb-9e49-1c60fde1c1c5.png
+
 ## Install
 
 ```bash
