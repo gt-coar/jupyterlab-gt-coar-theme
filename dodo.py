@@ -32,8 +32,10 @@ def task_binder():
 
 
 def task_setup():
+    """ensure a working setup"""
     yield dict(
         name="js",
+        doc="ensure local npm dependencies",
         uptodate=[
             tools.config_changed(
                 dict({k: D.PKG[k] for k in D.PKG if "dependencies" in k.lower()})
@@ -45,8 +47,10 @@ def task_setup():
 
 
 def task_build():
+    """build intermediate artifacts"""
     yield dict(
         name="lib",
+        doc="build the js lib",
         file_dep=[P.YARN_INTEGRITY, *P.ALL_TS_SRC, P.PKG_JSON, P.TSCONFIG],
         actions=[["jlpm", "build:lib"]],
         targets=[P.TSBUILD, P.PLUGIN_JS],
@@ -54,13 +58,18 @@ def task_build():
 
     yield dict(
         name="ext",
+        doc="build the federated labextension",
         actions=[[*C.LAB_EXT, "build", "--debug", "."]],
         file_dep=[P.TSBUILD, *P.ALL_STYLE],
         targets=[P.EXT_PKG],
     )
 
+
+def task_dist():
+    """build artifacts for distribution"""
     yield dict(
         name="tgz",
+        doc="build the npm distribution",
         file_dep=[P.TSBUILD, *P.ALL_STYLE, P.PKG_JSON, P.README, P.LICENSE],
         actions=[
             (tools.create_folder, [P.DIST]),
@@ -72,6 +81,7 @@ def task_build():
     for cmd, dist in D.PY_DIST_CMD.items():
         yield dict(
             name=cmd,
+            doc=f"build the python {cmd}",
             actions=[[*C.SETUP, cmd], [*C.TWINE_CHECK, dist]],
             file_dep=[
                 *P.ALL_PY_SRC,
@@ -85,11 +95,39 @@ def task_build():
             targets=[dist],
         )
 
+    def _run_hash():
+        # mimic sha256sum CLI
+        if P.SHA256SUMS.exists():
+            P.SHA256SUMS.unlink()
+
+        lines = []
+
+        for p in D.HASH_DEPS:
+            if p.parent != P.DIST:
+                tgt = P.DIST / p.name
+                if tgt.exists():
+                    tgt.unlink()
+                shutil.copy2(p, tgt)
+            lines += ["  ".join([sha256(p.read_bytes()).hexdigest(), p.name])]
+
+        output = "\n".join(lines)
+        print(output)
+        P.SHA256SUMS.write_text(output)
+
+    yield dict(
+        name="hash",
+        doc="make a hash bundle of the dist artifacts",
+        actions=[_run_hash],
+        file_dep=D.HASH_DEPS,
+        targets=[P.SHA256SUMS],
+    )
+
 
 def task_dev():
-    """start jupyterlab"""
+    """prepare for interactive development"""
     yield dict(
         name="py",
+        doc="install python for interactive development",
         actions=[
             [
                 *C.PIP,
@@ -105,6 +143,7 @@ def task_dev():
 
     yield dict(
         name="ext",
+        doc="ensure the labextension is symlinked for live development",
         actions=[[*C.LAB_EXT, "develop", "--overwrite", "."]],
         task_dep=["dev:py"],
     )
@@ -112,8 +151,7 @@ def task_dev():
 
 def task_lab():
     """start jupyterlab"""
-    yield dict(
-        name="start",
+    return dict(
         uptodate=[lambda: False],
         task_dep=["dev:ext"],
         actions=[[*C.LAB, "--no-browser", "--debug"]],
@@ -155,6 +193,7 @@ def task_lint():
     """apply source formatting and linting"""
     yield dict(
         name="py",
+        doc="run basic python formatting/checking",
         file_dep=P.ALL_PY,
         actions=[
             ["isort", *P.ALL_PY],
@@ -164,7 +203,8 @@ def task_lint():
     )
 
     yield dict(
-        name="js",
+        name="prettier",
+        doc="format things with prettier",
         file_dep=[*P.ALL_PRETTIER, P.YARN_INTEGRITY],
         actions=[["jlpm", "--silent", "lint"]],
     )
@@ -187,34 +227,10 @@ def task_lint():
     for path in P.ALL_HEADERS:
         yield dict(
             name=f"headers:{path.relative_to(P.ROOT)}",
+            doc=f"ensure license/copyright on {path.name}",
             file_dep=[path],
             actions=[_header(path)],
         )
-
-
-def task_hash_dist():
-    """make a hash bundle of the dist artifacts"""
-
-    def _run_hash():
-        # mimic sha256sum CLI
-        if P.SHA256SUMS.exists():
-            P.SHA256SUMS.unlink()
-
-        lines = []
-
-        for p in D.HASH_DEPS:
-            if p.parent != P.DIST:
-                tgt = P.DIST / p.name
-                if tgt.exists():
-                    tgt.unlink()
-                shutil.copy2(p, tgt)
-            lines += ["  ".join([sha256(p.read_bytes()).hexdigest(), p.name])]
-
-        output = "\n".join(lines)
-        print(output)
-        P.SHA256SUMS.write_text(output)
-
-    return dict(actions=[_run_hash], file_dep=D.HASH_DEPS, targets=[P.SHA256SUMS])
 
 
 class P:

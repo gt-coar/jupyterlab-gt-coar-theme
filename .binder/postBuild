@@ -6,7 +6,7 @@ set -eux
 
 doit
 
-mkdir ~/.jupyter/lab
+mkdir -p ~/.jupyter/lab/
 cp -r .binder/user-settings ~/.jupyter/lab/
 
 jupyter labextension uninstall --no-build jupyter-offlinenotebook || echo "ok"
