@@ -1,11 +1,15 @@
 # JupyterLab GT COAR Theme
 
+[![install from PyPI][pypi-badge]][pypi]
 [![launch interactive demo on binder][binder-badge]][binder]
 
+> an unoffical Georgia Tech theme for [JupyterLab] 3
+
+[pypi-badge]: https://img.shields.io/pypi/v/jupyterlab-gt-coar-theme
+[pypi]: https://pypi.org/project/jupyterlab-gt-coar-theme
 [binder-badge]: https://mybinder.org/badge_logo.svg
 [binder]: https://mybinder.org/v2/gh/gt-coar/jupyterlab-gt-coar-theme/HEAD?urlpath=lab
-
-> an unoffical Georgia Tech theme for JupyterLab 3
+[jupyterlab]: https://github.com/jupyterlab/jupyterlab
 
 ![a screenshot of the theme][screenshot]
 
@@ -15,11 +19,10 @@
 ## Install
 
 ```bash
-# TBD: pip install jupyterlab-gt-coar-theme
+pip install jupyterlab-gt-coar-theme
 ```
 
-> This package is not yet published. In the meantime, see the [contributing
-> guide][contributing] for a development install.
+> See the [contributing guide][contributing] for a development install.
 
 [contributing]:
   https://github.com/gt-coar/jupyterlab-gt-coar-theme/blob/master/CONTRIBUTING.md
