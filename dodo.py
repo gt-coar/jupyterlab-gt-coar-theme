@@ -1,6 +1,11 @@
+"""automation for jupyterlab-gt-coar-theme"""
+# Copyright (c) 2021 University System of Georgia and jupyterlab-gt-coar-theme contributors
+# Distributed under the terms of the BSD-3-Clause License.
+
 import json
 import os
 import subprocess
+from datetime import datetime
 from pathlib import Path
 
 from doit.tools import PythonInteractiveAction, config_changed
@@ -94,7 +99,7 @@ def task_dev():
 
 
 def task_lab():
-    """"""
+    """start jupyterlab"""
     yield dict(
         name="start",
         uptodate=[lambda: False],
@@ -111,7 +116,6 @@ def task_watch():
             subprocess.Popen(args)
             for args in [
                 ["jlpm", "watch:lib"],
-                # ["jlpm", "watch:webpack"],
                 [*C.LAB_EXT, "watch", "."],
             ]
         ]
@@ -153,6 +157,35 @@ def task_lint():
         actions=[["jlpm", "--silent", "lint"]],
     )
 
+    def _header(path):
+        def _check():
+            any_text = path.read_text()
+            problems = []
+            if D.COPYRIGHT not in any_text:
+                problems += [f"{path.relative_to(P.ROOT)} missing copyright info"]
+            if path != P.LICENSE and D.LICENSE not in any_text:
+                problems += [f"{path.relative_to(P.ROOT)} missing license info"]
+            if problems:
+                print("\n".join(problems))
+                return False
+            return True
+
+        return _check
+
+    for path in [
+        *P.ALL_PY,
+        *P.ALL_CSS,
+        *P.ALL_TS_SRC,
+        *P.ALL_MD,
+        P.LICENSE,
+        P.SETUP_CFG,
+    ]:
+        yield dict(
+            name=f"headers:{path.relative_to(P.ROOT)}",
+            file_dep=[path],
+            actions=[_header(path)],
+        )
+
 
 class P:
     """paths"""
@@ -176,15 +209,16 @@ class P:
     EXT_PKG = EXT_DIST / "package.json"
     TS_SRC = ROOT / "src"
     STYLE = ROOT / "style"
-    ALL_STYLE = [*STYLE.rglob("*.css"), *STYLE.rglob("*.svg")]
 
     ALL_TS_SRC = sorted(TS_SRC.rglob("*.ts"))
     ALL_PY_SRC = sorted(PY_SRC.rglob("*.py"))
     ALL_PY = [*ALL_PY_SRC, DODO]
+    ALL_CSS = [*STYLE.rglob("*.css")]
     ALL_JSON = sorted(ROOT.glob("*.json"))
     README = ROOT / "README.md"
     LICENSE = ROOT / "LICENSE.txt"
     ALL_MD = sorted(ROOT.glob("*.md"))
+    ALL_STYLE = [*ALL_CSS, *STYLE.rglob("*.svg")]
     ALL_PRETTIER = [*ALL_MD, *ALL_STYLE, *ALL_JSON]
 
     YARN_INTEGRITY = ROOT / "node_modules/.yarn-integrity"
@@ -203,6 +237,14 @@ class D:
         "{}-{}-py3-none-any.whl".format(PY_NAME.replace("-", "_"), PKG["version"])
     )
     PY_DIST_CMD = {"sdist": SDIST, "bdist_wheel": WHEEL}
+    # this line is very long, should end with "contributors," but close enough
+    COPYRIGHT = (
+        "Copyright (c) {} "
+        "University System of Georgia and jupyterlab-gt-coar-theme".format(
+            datetime.now().year
+        )
+    )
+    LICENSE = "Distributed under the terms of the BSD-3-Clause License."
 
 
 class C:
