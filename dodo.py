@@ -246,7 +246,7 @@ class P:
     ALL_PY_SRC = sorted(PY_SRC.rglob("*.py"))
     ALL_PY = [*ALL_PY_SRC, DODO]
     ALL_CSS = [*STYLE.rglob("*.css")]
-    ALL_JSON = sorted(ROOT.glob("*.json"))
+    ALL_JSON = [*ROOT.glob("*.json"), *BINDER.rglob("*.json")]
     README = ROOT / "README.md"
     LICENSE = ROOT / "LICENSE.txt"
     ALL_MD = sorted(ROOT.glob("*.md"))
