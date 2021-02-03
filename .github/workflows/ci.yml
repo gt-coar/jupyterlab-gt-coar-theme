@@ -98,7 +98,7 @@ jobs:
         if: always()
 
       - name: build
-        run: doit -n4 hash_dist || doit hash_dist
+        run: doit -n4 dist || doit dist
 
       - name: status (after build)
         run: doit list --all --status | sort
@@ -138,7 +138,7 @@ jobs:
 
       - uses: actions/download-artifact@v2
         with:
-          name: jupyterlab-gt-coar-theme ${{ github.run_number }}
+          name: jupyterlab-gt-coar-theme ${{ github.run_number }} dist
           path: ./dist
 
       - name: Install the prerequisites

@@ -53,7 +53,7 @@
     "clean": "rimraf ./lib ./py_src/jupyterlab_gt_coar_theme/labextension",
     "watch:lib": "jlpm build:lib --watch --preserveWatchOutput",
     "lint": "jlpm lint:prettier",
-    "lint:prettier": "prettier --write --list-different \"*.{json,yml,md}\" \"{py_src,src,.github,style}/**/*.{ts,tsx,js,jsx,css,json,md,yml}\""
+    "lint:prettier": "prettier --write --list-different \"*.{json,yml,md}\" \"{.binder,.github,py_src,src,style}/**/*.{ts,tsx,js,jsx,css,json,md,yml}\""
   },
   "sideEffects": [
     "style/*.css"
