@@ -30,7 +30,7 @@ pip install jupyterlab-gt-coar-theme
 ## Usage
 
 After launching JupyterLab, in the _Main Menu_, select one of the _GT COAR_ themes from
-the _View_ menu
+the _Settings_ menu
 
 ## Uninstall
 
