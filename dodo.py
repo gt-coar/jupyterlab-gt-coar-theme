@@ -69,10 +69,7 @@ def task_build():
     for cmd, dist in D.PY_DIST_CMD.items():
         yield dict(
             name=cmd,
-            actions=[
-                [*C.SETUP, cmd],
-                [*C.TWINE_CHECK, dist]
-            ],
+            actions=[[*C.SETUP, cmd], [*C.TWINE_CHECK, dist]],
             file_dep=[
                 *P.ALL_PY_SRC,
                 P.EXT_PKG,
