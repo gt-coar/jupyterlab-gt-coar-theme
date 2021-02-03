@@ -1,10 +1,12 @@
-#!/usr/bin/env bash
-
 # Copyright (c) 2021 University System of Georgia and jupyterlab-gt-coar-theme contributors
 # Distributed under the terms of the BSD-3-Clause License.
-set -eux
 
+jupyterlab ==3.*
 doit
-
-jupyter labextension uninstall --no-build jupyter-offlinenotebook || echo "ok"
-jupyter labextension list
+twine
+pip
+black
+isort
+flake8
+pyflakes
+wheel

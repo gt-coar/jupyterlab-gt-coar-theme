@@ -1,0 +1,14 @@
+# Copyright (c) 2021 University System of Georgia and jupyterlab-gt-coar-theme contributors
+# Distributed under the terms of the BSD-3-Clause License.
+
+local_repodata_ttl: 3600
+repodata_fns: [repodata.json]
+remote_connect_timeout_secs: 60
+remote_read_timeout_secs: 120
+remote_max_retries: 5
+remote_backoff_factor: 2
+show_channel_urls: true
+use_index_cache: true
+use_only_tar_bz2: true
+unsatisfiable_hints_check_depth: 0
+unsatisfiable_hints: false

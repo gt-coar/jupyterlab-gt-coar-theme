@@ -4,11 +4,13 @@
 
 import json
 import os
+import shutil
 import subprocess
 from datetime import datetime
+from hashlib import sha256
 from pathlib import Path
 
-from doit.tools import PythonInteractiveAction, config_changed
+from doit.tools import CmdAction, PythonInteractiveAction, config_changed
 
 os.environ.update(
     NODE_OPTS="--max-old-space-size=4096",
@@ -26,7 +28,7 @@ DOIT_CONFIG = {
 
 def task_binder():
     """prepare for basic interactive development, as on binder"""
-    return dict(actions=[["echo", "ok"]])
+    return dict(task_dep=["dev:ext"], actions=[["echo", "ok"]])
 
 
 def task_setup():
@@ -53,14 +55,24 @@ def task_build():
     yield dict(
         name="ext",
         actions=[[*C.LAB_EXT, "build", "--debug", "."]],
-        file_dep=[P.TSBUILD],
+        file_dep=[P.TSBUILD, *P.ALL_STYLE],
         targets=[P.EXT_PKG],
+    )
+
+    yield dict(
+        name="tgz",
+        file_dep=[P.TSBUILD, *P.ALL_STYLE, P.PKG_JSON, P.README, P.LICENSE],
+        actions=[CmdAction([*C.NPM_PACK, ".."], cwd=P.DIST, shell=False)],
+        targets=[D.NPM_TGZ],
     )
 
     for cmd, dist in D.PY_DIST_CMD.items():
         yield dict(
             name=cmd,
-            actions=[[*C.SETUP, cmd]],
+            actions=[
+                [*C.SETUP, cmd],
+                [*C.TWINE_CHECK, dist]
+            ],
             file_dep=[
                 *P.ALL_PY_SRC,
                 P.EXT_PKG,
@@ -172,19 +184,37 @@ def task_lint():
 
         return _check
 
-    for path in [
-        *P.ALL_PY,
-        *P.ALL_CSS,
-        *P.ALL_TS_SRC,
-        *P.ALL_MD,
-        P.LICENSE,
-        P.SETUP_CFG,
-    ]:
+    for path in P.ALL_HEADERS:
         yield dict(
             name=f"headers:{path.relative_to(P.ROOT)}",
             file_dep=[path],
             actions=[_header(path)],
         )
+
+
+def task_hash_dist():
+    """make a hash bundle of the dist artifacts"""
+
+    def _run_hash():
+        # mimic sha256sum CLI
+        if P.SHA256SUMS.exists():
+            P.SHA256SUMS.unlink()
+
+        lines = []
+
+        for p in D.HASH_DEPS:
+            if p.parent != P.DIST:
+                tgt = P.DIST / p.name
+                if tgt.exists():
+                    tgt.unlink()
+                shutil.copy2(p, tgt)
+            lines += ["  ".join([sha256(p.read_bytes()).hexdigest(), p.name])]
+
+        output = "\n".join(lines)
+        print(output)
+        P.SHA256SUMS.write_text(output)
+
+    return dict(actions=[_run_hash], file_dep=D.HASH_DEPS, targets=[P.SHA256SUMS])
 
 
 class P:
@@ -196,6 +226,8 @@ class P:
     BUILD = ROOT / "build"
     DIST = ROOT / "dist"
     LIB = ROOT / "lib"
+    BINDER = ROOT / ".binder"
+    CI = ROOT / ".github"
 
     SETUP_PY = ROOT / "setup.py"
     SETUP_CFG = ROOT / "setup.cfg"
@@ -219,12 +251,26 @@ class P:
     LICENSE = ROOT / "LICENSE.txt"
     ALL_MD = sorted(ROOT.glob("*.md"))
     ALL_STYLE = [*ALL_CSS, *STYLE.rglob("*.svg")]
-    ALL_PRETTIER = [*ALL_MD, *ALL_STYLE, *ALL_JSON]
+    ALL_YAML = [*CI.rglob("*.yml"), *BINDER.glob("*.yml")]
+    ALL_PRETTIER = [*ALL_MD, *ALL_STYLE, *ALL_JSON, *ALL_YAML]
+    ALL_SHELL = [BINDER / "postBuild"]
+    ALL_HEADERS = [
+        *ALL_PY,
+        *ALL_CSS,
+        *ALL_TS_SRC,
+        *ALL_MD,
+        *ALL_YAML,
+        *ALL_SHELL,
+        LICENSE,
+        SETUP_CFG,
+    ]
 
     YARN_INTEGRITY = ROOT / "node_modules/.yarn-integrity"
     WEBPACK_JS = ROOT / "webpack.config.js"
     INDEX_CSS = LIB / "index.css"
     PLUGIN_JS = LIB / "index.js"
+
+    SHA256SUMS = DIST / "SHA256SUMS"
 
 
 class D:
@@ -237,6 +283,13 @@ class D:
         "{}-{}-py3-none-any.whl".format(PY_NAME.replace("-", "_"), PKG["version"])
     )
     PY_DIST_CMD = {"sdist": SDIST, "bdist_wheel": WHEEL}
+    NPM_TGZ = P.DIST / (
+        "{}-{}.tgz".format(
+            PKG["name"].replace("@", "").replace("/", "-"), PKG["version"]
+        )
+    )
+    HASH_DEPS = [WHEEL, SDIST, NPM_TGZ]
+
     # this line is very long, should end with "contributors," but close enough
     COPYRIGHT = (
         "Copyright (c) {} "
@@ -256,3 +309,5 @@ class C:
     LAB_EXT = [*JP, "labextension"]
     LAB = [*JP, "lab"]
     SETUP = ["python", "setup.py"]
+    NPM_PACK = ["npm", "pack"]
+    TWINE_CHECK = [*PYM, "twine", "check"]
