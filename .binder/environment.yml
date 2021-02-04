@@ -20,3 +20,7 @@ dependencies:
   - flake8
   - pyflakes
   - wheel
+  # demo/integration testing
+  - ipywidgets
+  - pandas
+  - bqplot

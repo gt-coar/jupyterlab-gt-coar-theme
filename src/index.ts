@@ -5,8 +5,15 @@
 
 import { JupyterFrontEnd, JupyterFrontEndPlugin } from '@jupyterlab/application';
 import { IThemeManager } from '@jupyterlab/apputils';
+import { LabIcon, jupyterFaviconIcon } from '@jupyterlab/ui-components';
 
-const NS = '@gt-coar/jupyterlab-theme';
+import { NS, NAME, GT_SVG, GT_ICON_ID } from './tokens';
+
+export const GT_ICON = new LabIcon({ name: GT_ICON_ID, svgstr: GT_SVG });
+
+const OG_FAVICON = jupyterFaviconIcon.svgstr;
+
+let wasLoaded = false;
 
 function makeTheme(value: string): JupyterFrontEndPlugin<void> {
   return {
@@ -15,12 +22,23 @@ function makeTheme(value: string): JupyterFrontEndPlugin<void> {
     autoStart: true,
     activate: (app: JupyterFrontEnd, manager: IThemeManager) => {
       const style = `${NS}/index.css`;
+      const isLight = value == 'Light';
 
       manager.register({
-        name: `GT COAR ${value}`,
-        isLight: value == 'Light',
-        load: () => manager.loadCSS(style),
-        unload: () => Promise.resolve(undefined),
+        name: `${NAME} ${value}`,
+        isLight,
+        themeScrollbars: !isLight,
+        load: async () => {
+          jupyterFaviconIcon.svgstr = GT_SVG;
+          // avoid loading twice
+          wasLoaded ? void 0 : manager.loadCSS(style);
+          wasLoaded = true;
+        },
+        unload: async () => {
+          if (jupyterFaviconIcon.svgstr === GT_SVG) {
+            jupyterFaviconIcon.svgstr = OG_FAVICON;
+          }
+        },
       });
     },
   };

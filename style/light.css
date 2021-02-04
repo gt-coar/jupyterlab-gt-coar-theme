@@ -4,14 +4,19 @@
 */
 
 /* variables */
-[data-jp-theme-light='true'] {
-  --jp-brand-color1: var(--gt-blue-link);
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='true'] {
+  --jp-brand-color0: var(--gt-blue) !important;
+  --jp-brand-color1: var(--gt-blue-link) !important;
   --jp-layout-color0: var(--gt-white);
   --jp-layout-color1: var(--gt-white);
   --jp-layout-color2: var(--gt-superlight-grey);
   --jp-layout-color3: var(--gt-light-grey);
   --jp-warn-color0: var(--gt-tertiary-horizon);
   --jp-icon-contrast-color0: var(--gt-tertiary-the-whistle);
+
+  /* ui */
+  --jp-input-box-shadow: inset 0 0 2px var(--gt-gold-buzz);
+  --jp-cell-editor-box-shadow: var(--jp-input-box-shadow);
 
   /* code */
   --jp-mirror-editor-header-color: var(--gt-blue);
@@ -22,60 +27,76 @@
 
   /* content */
   --gtc-header-color: var(--gt-blue);
+  --gtc-widgets-label-color: var(--gt-tertiary-tower-patina);
+  --gtc-running-color: var(--gt-buzz-gold);
 }
 
 /* tabs */
-[data-jp-theme-light='true'] .lm-DockPanel-tabBar .lm-TabBar-tab.lm-mod-current {
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='true']
+  .lm-DockPanel-tabBar
+  .lm-TabBar-tab.lm-mod-current {
   background-color: var(--jp-layout-color0);
 }
-[data-jp-theme-light='true']
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='true']
   .lm-DockPanel-tabBar
   .lm-TabBar-tab.lm-mod-current.jp-mod-active {
   font-weight: 700;
 }
 
 /* buttons */
-[data-jp-theme-light='true'] button.jp-mod-styled.jp-mod-accept {
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='true']
+  button.jp-mod-styled.jp-mod-accept {
   background-color: var(--gt-blue-80);
   color: var(--gt-gold-buzz-60);
 }
 
-[data-jp-theme-light='true'] button.jp-mod-styled.jp-mod-accept:hover,
-[data-jp-theme-light='true'] button.jp-mod-styled.jp-mod-accept:active {
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='true']
+  button.jp-mod-styled.jp-mod-accept:hover,
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='true']
+  button.jp-mod-styled.jp-mod-accept:active {
   background-color: var(--gt-blue-link-hover);
   color: var(--gt-white);
 }
 
 /* menu */
-[data-jp-theme-light='true'] #jp-top-panel,
-[data-jp-theme-light='true'] #jp-menu-panel,
-[data-jp-theme-light='true'] .lm-MenuBar {
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='true'] #jp-top-panel,
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='true'] #jp-menu-panel,
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='true'] .lm-MenuBar {
   background-color: var(--gt-tertiary-atlanta-fog);
 }
 
-[data-jp-theme-light='true'] #jp-title-panel-title h1 {
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='true'] #jp-title-panel-title h1 {
   color: var(--gt-gold-buzz);
 }
 
-[data-jp-theme-light='true'] .lm-MenuBar-item.lm-mod-active {
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='true']
+  .lm-MenuBar-item.lm-mod-active {
   background-color: var(--gt-blue-link-hover);
   color: var(--gt-superlight-grey);
 }
 
-[data-jp-theme-light='true'] .lm-MenuBar {
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='true'] .lm-MenuBar {
   color: var(--gt-superlight-grey);
 }
 
-[data-jp-theme-light='true'] .lm-MenuBar.lm-mod-active .lm-MenuBar-item.lm-mod-active {
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='true']
+  .lm-MenuBar.lm-mod-active
+  .lm-MenuBar-item.lm-mod-active {
   background-color: var(--gt-blue-link-hover);
   color: var(--gt-superlight-grey);
   border-color: transparent;
 }
 
 /* simple */
-[data-jp-theme-light='true']
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='true']
   .jp-LabShell[data-shell-mode='single-document']
   .lm-MenuBar.lm-mod-active
   .lm-MenuBar-item.lm-mod-active {
   border-top: var(--jp-border-width) solid var(--gt-gold-buzz);
+}
+
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='true']
+  .jp-switch[aria-checked='true']
+  .jp-switch-track {
+  background-color: var(--gt-blue-link-hover);
 }

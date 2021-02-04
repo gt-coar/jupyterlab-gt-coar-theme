@@ -76,10 +76,55 @@
   font-weight: 700;
 }
 
+[data-jp-theme-name*='GT COAR']
+  .jp-DirListing-item.jp-mod-running
+  .jp-DirListing-itemIcon:before {
+  color: var(--gtc-running-color);
+  font-size: var(--jp-ui-font-size2);
+  left: -10px;
+  top: -2px;
+}
+
 /* simple */
 [data-jp-theme-name*='GT COAR']
   .jp-LabShell[data-shell-mode='single-document']
   .lm-MenuBar.lm-mod-active
   .lm-MenuBar-item.lm-mod-active {
   border-top: var(--jp-border-width) solid var(--gt-gold-buzz);
+}
+
+/* html */
+[data-jp-theme-name*='GT COAR'] .jp-RenderedHTMLCommon table {
+  font-size: var(--jp-ui-font-size1);
+}
+
+[data-jp-theme-name*='GT COAR'] .jp-RenderedHTMLCommon blockquote {
+  border-left: 5px solid var(--gt-tertiary-burger-bowl);
+}
+
+/* widgets */
+[data-jp-theme-name*='GT COAR'] .jupyter-widgets {
+  --jp-widgets-font-size: var(--jp-ui-font-size2);
+  --jp-widgets-input-background-color: var(--jp-layout-color2);
+  --jp-widgets-input-color: var(--jp-ui-font-color0);
+  --jp-widgets-label-color: var(--gtc-widgets-label-color);
+  --jp-widgets-readout-color: var(--jp-ui-font-color0);
+  --jp-widgets-slider-active-handle-color: var(--gtc-widgets-label-color);
+  --jp-widgets-slider-border-width: 2px;
+  --jp-widgets-slider-handle-background-color: var(--jp-layout-color0);
+  --jp-widgets-slider-handle-border-color: var(--gtc-widgets-label-color);
+}
+
+[data-jp-theme-name*='GT COAR'] .jupyter-widgets .widget-label {
+  font-weight: 700;
+}
+
+/* bqplot */
+[data-jp-theme-name*='GT COAR'] {
+  --bq-axislabel-font: 16px var(--gt-font-primary);
+  --bq-axislabel-font-size: 16px;
+  --bq-font: 14px var(--gt-font-secondary);
+  --bq-font-size: 14px;
+  --bq-mainheading-font-size: 18px;
+  --bq-mainheading-font: 18px var(--gt-font-primary);
 }
