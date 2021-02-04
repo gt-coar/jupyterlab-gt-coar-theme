@@ -1,0 +1,100 @@
+/*
+  Copyright (c) 2021 University System of Georgia and jupyterlab-gt-coar-theme contributors
+| Distributed under the terms of the BSD-3-Clause License.
+*/
+
+/* variables */
+[data-jp-theme-light='false'] {
+  --jp-brand-color1: var(--gt-gold-buzz) !important;
+  --jp-layout-color0: var(--gt-black);
+  --jp-inverse-layout-color3: var(--gt-gold-buzz);
+  --jp-warn-color0: var(--gt-tertiary-horizon);
+  --jp-icon-contrast-color0: var(--gt-gold-buzz);
+  --jp-content-line-height: 2;
+  --jp-content-font-family: var(--gt-font-primary);
+  --jp-ui-font-family: var(--gt-font-primary);
+  --jp-code-font-family: var(--gt-font-mono);
+  --jp-ui-font-size1: 15px;
+  --jp-ui-font-size0: 14px;
+  --jp-content-font-size1: 15px;
+  --jp-content-font-size5: 32px;
+
+  /* code */
+  --jp-mirror-editor-header-color: var(--gt-gold);
+  --jp-mirror-editor-keyword-color: var(--gt-tertiary-bobby-jones);
+  --jp-mirror-editor-def-color: var(--gt-blue-link);
+  --jp-mirror-editor-error-color: var(--thwg);
+  --jp-mirror-editor-quote-color: var(--gt-tertiary-bobby-jones);
+
+  --jp-border-color0: transparent !important;
+  --jp-border-color1: transparent !important;
+  --jp-border-color2: transparent !important;
+  --jp-border-color3: transparent !important;
+
+  /* content */
+  --gtc-header-color: var(--gt-gold);
+}
+
+body[data-jp-theme-light='false'] {
+  background-color: var(--gt-black);
+}
+
+/* tabs */
+[data-jp-theme-light='false'] .lm-DockPanel-tabBar .lm-TabBar-tab.lm-mod-current {
+  background-color: var(--jp-layout-color0);
+}
+
+[data-jp-theme-light='false']
+  .lm-DockPanel-tabBar
+  .lm-TabBar-tab.lm-mod-current.jp-mod-active {
+  font-weight: 700;
+}
+
+/* buttons */
+[data-jp-theme-light='false'] button.jp-mod-styled.jp-mod-accept {
+  background-color: var(--gt-gold-buzz-60);
+  color: var(--gt-blue-80);
+}
+
+[data-jp-theme-light='false'] button.jp-mod-styled.jp-mod-accept:hover,
+[data-jp-theme-light='false'] button.jp-mod-styled.jp-mod-accept:active {
+  background-color: var(--gt-gold-buzz);
+  color: var(--gt-black);
+}
+
+/* menu */
+[data-jp-theme-light='false'] #jp-title-panel-title h1 {
+  color: var(--gt-gold-buzz);
+}
+
+[data-jp-theme-light='false'] .lm-MenuBar-item.lm-mod-active {
+  background-color: var(--gt-gold-buzz);
+  color: var(--gt-black);
+}
+
+[data-jp-theme-light='false'] .lm-MenuBar.lm-mod-active .lm-MenuBar-item.lm-mod-active {
+  background-color: var(--gt-gold-buzz);
+  color: var(--gt-black);
+  border-color: transparent;
+}
+
+[data-jp-theme-light='false'] .lm-TabBar-tab.p-TabBar-tab {
+  border: 0;
+}
+
+/* files */
+[data-jp-theme-light='false'] .jp-DirListing-item.jp-mod-selected {
+  color: var(--gt-black);
+}
+
+/* icons */
+[data-jp-theme-light='false']
+  .jp-DirListing-item.jp-mod-selected
+  .jp-icon-selectable[fill],
+[data-jp-theme-light='false']
+  .jp-FileBrowser-toolbar.jp-Toolbar
+  .jp-Toolbar-item:first-child
+  .jp-ToolbarButtonComponent
+  .jp-icon3 {
+  fill: var(--gt-black);
+}

@@ -6,22 +6,26 @@
 import { JupyterFrontEnd, JupyterFrontEndPlugin } from '@jupyterlab/application';
 import { IThemeManager } from '@jupyterlab/apputils';
 
-const NAME = '@gt-coar/jupyterlab-theme';
+const NS = '@gt-coar/jupyterlab-theme';
 
-const extension: JupyterFrontEndPlugin<void> = {
-  id: `${NAME}:light`,
-  requires: [IThemeManager],
-  autoStart: true,
-  activate: (app: JupyterFrontEnd, manager: IThemeManager) => {
-    const style = `${NAME}/index.css`;
+function makeTheme(value: string): JupyterFrontEndPlugin<void> {
+  return {
+    id: `${NS}:${value.toLowerCase()}`,
+    requires: [IThemeManager],
+    autoStart: true,
+    activate: (app: JupyterFrontEnd, manager: IThemeManager) => {
+      const style = `${NS}/index.css`;
 
-    manager.register({
-      name: `GT COAR Light`,
-      isLight: true,
-      load: () => manager.loadCSS(style),
-      unload: () => Promise.resolve(undefined),
-    });
-  },
-};
+      manager.register({
+        name: `GT COAR ${value}`,
+        isLight: value == 'Light',
+        load: () => manager.loadCSS(style),
+        unload: () => Promise.resolve(undefined),
+      });
+    },
+  };
+}
 
-export default extension;
+const extensions = ['Light', 'Dark'].map(makeTheme);
+
+export default extensions;

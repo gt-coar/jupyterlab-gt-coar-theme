@@ -5,17 +5,11 @@
 
 @import './variables.css';
 @import './brand.css';
+@import './light.css';
+@import './dark.css';
 
 /* variables */
 [data-jp-theme-name*='GT COAR'] {
-  --jp-brand-color1: var(--gt-blue-link);
-  --jp-layout-color0: var(--gt-white);
-  --jp-layout-color1: var(--gt-superlight-grey);
-  --jp-layout-color2: var(--gt-light-grey);
-  --jp-layout-color3: var(--gt-warm-grey);
-  --jp-inverse-layout-color3: var(--gt-blue-80);
-  --jp-warn-color0: var(--gt-tertiary-horizon);
-  --jp-icon-contrast-color0: var(--gt-tertiary-the-whistle);
   --jp-content-line-height: 2;
   --jp-content-font-family: var(--gt-font-primary);
   --jp-ui-font-family: var(--gt-font-primary);
@@ -26,7 +20,6 @@
   --jp-content-font-size5: 32px;
 
   /* code */
-  --jp-mirror-editor-header-color: var(--gt-blue);
   --jp-mirror-editor-keyword-color: var(--gt-tertiary-bobby-jones);
   --jp-mirror-editor-def-color: var(--gt-blue-link);
   --jp-mirror-editor-error-color: var(--thwg);
@@ -53,29 +46,7 @@
 [data-jp-theme-name*='GT COAR'] h6 {
   font-family: var(--gt-font-secondary);
   font-weight: 700;
-  color: var(--gt-blue);
-}
-
-/* tabs */
-[data-jp-theme-name*='GT COAR'] .lm-DockPanel-tabBar .lm-TabBar-tab.lm-mod-current {
-  background-color: var(--jp-layout-color0);
-}
-[data-jp-theme-name*='GT COAR']
-  .lm-DockPanel-tabBar
-  .lm-TabBar-tab.lm-mod-current.jp-mod-active {
-  font-weight: 700;
-}
-
-/* buttons */
-[data-jp-theme-name*='GT COAR'] button.jp-mod-styled.jp-mod-accept {
-  background-color: var(--gt-blue-80);
-  color: var(--gt-gold-buzz-60);
-}
-
-[data-jp-theme-name*='GT COAR'] button.jp-mod-styled.jp-mod-accept:hover,
-[data-jp-theme-name*='GT COAR'] button.jp-mod-styled.jp-mod-accept:active {
-  background-color: var(--gt-blue-link-hover);
-  color: var(--gt-white);
+  color: var(--gtc-header-color);
 }
 
 /* menu */
@@ -90,37 +61,14 @@
   visibility: hidden;
 }
 
-[data-jp-theme-name*='GT COAR'] #jp-top-panel,
-[data-jp-theme-name*='GT COAR'] #jp-menu-panel,
-[data-jp-theme-name*='GT COAR'] .lm-MenuBar {
-  background-color: var(--gt-tertiary-atlanta-fog);
-}
-
-[data-jp-theme-name*='GT COAR'] #jp-title-panel-title h1 {
-  color: var(--gt-gold-buzz);
-}
-
-[data-jp-theme-name*='GT COAR'] .lm-MenuBar-item.lm-mod-active {
-  background-color: var(--gt-blue-link-hover);
-  color: var(--gt-superlight-grey);
-}
-
-[data-jp-theme-name*='GT COAR'] .lm-MenuBar {
-  color: var(--gt-superlight-grey);
-}
-
-[data-jp-theme-name*='GT COAR']
-  .lm-MenuBar.lm-mod-active
-  .lm-MenuBar-item.lm-mod-active {
-  background-color: var(--gt-blue-link-hover);
-  color: var(--gt-superlight-grey);
-  border-color: transparent;
-}
-
 /* commands */
-
 [data-jp-theme-name*='GT COAR'] .lm-CommandPalette-wrapper::after {
   background-color: var(--gt-gold-buzz-60);
+}
+
+/* files */
+[data-jp-theme-name*='GT COAR'] .jp-DirListing-item.jp-mod-selected {
+  font-weight: 700;
 }
 
 /* files */
