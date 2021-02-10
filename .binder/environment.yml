@@ -8,7 +8,7 @@ channels:
   - nodefaults
 
 dependencies:
-  - jupyterlab ==3.*
+  - jupyterlab >=3.0.7
   - nodejs >=14,<15
   - python >=3.9,<3.10
   - doit

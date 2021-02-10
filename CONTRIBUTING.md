@@ -8,10 +8,12 @@
 CONDARC=.github/.condarc mamba env update --file .binder/environment.yml
 ```
 
+> you _can_ use `conda` for this, but it's slower and untested
+
 Activate your environment:
 
 ```bash
-mamba activate jupyterlab-gt-coar-theme
+conda activate jupyterlab-gt-coar-theme
 ```
 
 ## Use doit
