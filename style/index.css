@@ -214,6 +214,7 @@
 
 [data-jp-theme-name*='GT COAR'] .jupyter-widgets .widget-label {
   font-weight: 700;
+  width: unset;
 }
 
 /* bqplot */
