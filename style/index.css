@@ -208,6 +208,8 @@
   --jp-widgets-slider-border-width: 2px;
   --jp-widgets-slider-handle-background-color: var(--jp-layout-color0);
   --jp-widgets-slider-handle-border-color: var(--gtc-widgets-label-color);
+  --jp-widgets-color: var(--jp-ui-font-color0);
+  font-family: var(--jp-ui-font-family);
 }
 
 [data-jp-theme-name*='GT COAR'] .jupyter-widgets .widget-label {
