@@ -127,14 +127,18 @@
 }
 
 /* launcher */
-[data-jp-theme-name*='GT COAR'] .jp-LauncherCard-label p {
-  font-size: var(--jp-ui-font-size1);
-}
-
 [data-jp-theme-name*='GT COAR'] .jp-Launcher-content {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  position: relative;
+}
+
+[data-jp-theme-name*='GT COAR'] .jp-Launcher-cwd {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background: var(--jp-layout-color0);
 }
 
 [data-jp-theme-name*='GT COAR'] .jp-Launcher-section {
@@ -156,6 +160,10 @@
 [data-jp-theme-name*='GT COAR'] .jp-LauncherCard:focus {
   background-color: var(--jp-layout-color2);
   color: var(--jp-ui-brand-color1);
+}
+
+[data-jp-theme-name*='GT COAR'] .jp-LauncherCard-label p {
+  font-size: var(--jp-ui-font-size1);
 }
 
 /* settings */
