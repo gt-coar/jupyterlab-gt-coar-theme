@@ -24,6 +24,13 @@
   --jp-mirror-editor-def-color: var(--gt-blue-link);
   --jp-mirror-editor-error-color: var(--thwg);
   --jp-mirror-editor-quote-color: var(--gt-tertiary-bobby-jones);
+
+  /* cursor */
+  --jp-code-cursor-width0: 2px;
+  --jp-editor-cursor-color: var(--jp-brand-color1);
+
+  /* launcher */
+  --jp-private-launcher-card-size: calc(var(--jp-ui-font-size2) * 6);
 }
 
 /* code */
@@ -35,6 +42,14 @@
   font-family: var(--jp-code-font-family);
   font-size: var(--jp-code-font-size);
   line-height: var(--jp-code-line-height);
+}
+
+[data-jp-theme-name*='GT COAR'] div.CodeMirror span.CodeMirror-matchingbracket {
+  color: var(--gt-blue-link-hover);
+}
+
+[data-jp-theme-name*='GT COAR'] .CodeMirror-cursor {
+  border-left-width: var(--jp-code-cursor-width0);
 }
 
 /* headings */
@@ -61,6 +76,35 @@
   visibility: hidden;
 }
 
+/* selected icons */
+[data-jp-theme-name*='GT COAR']
+  .jp-DirListing-item.jp-mod-selected
+  .jp-icon-selectable[fill],
+[data-jp-theme-name*='GT COAR']
+  #setting-editor
+  .jp-PluginList
+  li.jp-mod-selected
+  .jp-icon-selectable[fill],
+[data-jp-theme-name*='GT COAR']
+  .jp-FileBrowser-toolbar.jp-Toolbar
+  .jp-Toolbar-item:first-child
+  .jp-ToolbarButtonComponent
+  .jp-icon3 {
+  fill: var(--jp-layout-color0);
+}
+
+[data-jp-theme-name*='GT COAR'] [data-command='help:open'] {
+  color: var(--jp-warn-color0);
+}
+
+[data-jp-theme-name*='GT COAR'] .p-Menu-itemShortcut:not(:empty) {
+  font-family: var(--jp-code-font-family);
+  color: var(--jp-ui-font-color2);
+  font-size: var(--jp-ui-font-size0);
+  padding: 0.125em 0.5em;
+  text-align: center;
+}
+
 /* commands */
 [data-jp-theme-name*='GT COAR'] .lm-CommandPalette-wrapper::after {
   background-color: var(--gt-gold-buzz-60);
@@ -69,13 +113,10 @@
 /* files */
 [data-jp-theme-name*='GT COAR'] .jp-DirListing-item.jp-mod-selected {
   font-weight: 700;
+  color: var(--jp-layout-color0);
 }
 
-/* files */
-[data-jp-theme-name*='GT COAR'] .jp-DirListing-item.jp-mod-selected {
-  font-weight: 700;
-}
-
+/* running */
 [data-jp-theme-name*='GT COAR']
   .jp-DirListing-item.jp-mod-running
   .jp-DirListing-itemIcon:before {
@@ -83,6 +124,63 @@
   font-size: var(--jp-ui-font-size2);
   left: -10px;
   top: -2px;
+}
+
+/* launcher */
+[data-jp-theme-name*='GT COAR'] .jp-LauncherCard-label p {
+  font-size: var(--jp-ui-font-size1);
+}
+
+[data-jp-theme-name*='GT COAR'] .jp-Launcher-content {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+[data-jp-theme-name*='GT COAR'] .jp-Launcher-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+[data-jp-theme-name*='GT COAR'] .jp-Launcher-cardContainer {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+[data-jp-theme-name*='GT COAR'] .jp-LauncherCard {
+  width: calc(var(--jp-private-launcher-card-size) * 1.618);
+}
+
+[data-jp-theme-name*='GT COAR'] .jp-LauncherCard:hover,
+[data-jp-theme-name*='GT COAR'] .jp-LauncherCard:focus {
+  background-color: var(--jp-layout-color2);
+  color: var(--jp-ui-brand-color1);
+}
+
+/* settings */
+[data-jp-theme-name*='GT COAR'] #setting-editor .jp-PluginList li.jp-mod-selected {
+  color: var(--jp-layout-color0);
+  font-weight: 700;
+}
+[data-jp-theme-name*='GT COAR'] #setting-editor .jp-SettingsRawEditor .jp-Inspector {
+  height: var(--jp-ui-font-size3) !important;
+}
+
+/* meta */
+[data-jp-theme-name*='GT COAR'] input.add-tag {
+  min-width: 5em;
+}
+
+[data-jp-theme-name*='GT COAR'] .tag.applied-tag:hover {
+  text-decoration: line-through;
+  background-color: var(--jp-warn-color0);
+  color: var(--jp-layout-color0);
+}
+
+[data-jp-theme-name*='GT COAR'] .tag.applied-tag:hover svg {
+  opacity: 0;
+  transition: opacity 0.2s;
 }
 
 /* simple */

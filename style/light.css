@@ -24,6 +24,7 @@
   --jp-mirror-editor-def-color: var(--gt-blue-link);
   --jp-mirror-editor-error-color: var(--thwg);
   --jp-mirror-editor-quote-color: var(--gt-tertiary-bobby-jones);
+  --jp-mirror-editor-comment-color: var(--gt-tertiary-tower-patina);
 
   /* content */
   --gtc-header-color: var(--gt-blue);

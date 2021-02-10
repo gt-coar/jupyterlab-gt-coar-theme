@@ -32,8 +32,8 @@
   --jp-mirror-editor-quote-color: var(--gt-tertiary-bobby-jones);
   --jp-mirror-editor-operator-color: #c261ff;
   --jp-mirror-editor-meta-color: #c261ff;
+  --jp-mirror-editor-comment-color: var(--gt-tertiary-burger-bowl);
 
-  --jp-editor-cursor-color: var(--jp-brand-color1);
   --jp-cell-editor-border-color: transparent;
 
   --jp-border-color0: transparent !important;
@@ -101,24 +101,6 @@ body[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false'] {
 [data-jp-theme-name*='GT COAR'][data-jp-theme-light='false']
   .lm-TabBar-tab.p-TabBar-tab {
   border: 0;
-}
-
-/* files */
-[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false']
-  .jp-DirListing-item.jp-mod-selected {
-  color: var(--gt-black);
-}
-
-/* icons */
-[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false']
-  .jp-DirListing-item.jp-mod-selected
-  .jp-icon-selectable[fill],
-[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false']
-  .jp-FileBrowser-toolbar.jp-Toolbar
-  .jp-Toolbar-item:first-child
-  .jp-ToolbarButtonComponent
-  .jp-icon3 {
-  fill: var(--gt-black);
 }
 
 /* notebook */
