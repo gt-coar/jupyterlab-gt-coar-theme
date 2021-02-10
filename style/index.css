@@ -127,19 +127,29 @@
 }
 
 /* launcher */
+[data-jp-theme-name*='GT COAR'] .jp-Launcher-body {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  position: relative;
+  --gt-launcher-cwd-height: calc(var(--jp-ui-font-size1) * 4);
+}
+
 [data-jp-theme-name*='GT COAR'] .jp-Launcher-content {
+  flex: 1;
+  overflow-y: auto;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  position: relative;
-  padding-top: 0;
+  padding-top: var(--gt-launcher-cwd-height);
 }
 
 [data-jp-theme-name*='GT COAR'] .jp-Launcher-cwd {
-  flex: 1 100%;
-  position: sticky;
+  position: absolute;
+  right: 1em;
   top: 0;
-  max-height: 1em;
+  left: var(--jp-private-launcher-side-padding);
+  height: var(--gt-launcher-cwd-height);
 }
 
 [data-jp-theme-name*='GT COAR'] .jp-Launcher-cwd > *:first-child:not(:empty) {
