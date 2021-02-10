@@ -172,21 +172,17 @@
 
 [data-jp-theme-name*='GT COAR'] .jp-LauncherCard {
   width: calc(var(--jp-private-launcher-card-size) * 1.618);
-  background-color: var(--jp-layout-color2);
+  background-color: var(--jp-layout-color0);
 }
 
 [data-jp-theme-name*='GT COAR'] .jp-LauncherCard:hover,
 [data-jp-theme-name*='GT COAR'] .jp-LauncherCard:focus {
-  background-color: var(--jp-brand-color);
+  background-color: var(--jp-layout-color2);
 }
 
 [data-jp-theme-name*='GT COAR'] .jp-LauncherCard-label p {
   font-size: var(--jp-ui-font-size1);
-}
-
-[data-jp-theme-name*='GT COAR'] .jp-LauncherCard:hover p,
-[data-jp-theme-name*='GT COAR'] .jp-LauncherCard:focus p {
-  color: var(--jp-brand-color1);
+  font-weight: 700;
 }
 
 /* settings */
