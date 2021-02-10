@@ -24,3 +24,4 @@ dependencies:
   - ipywidgets
   - pandas
   - bqplot
+  - nbgitpuller
