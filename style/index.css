@@ -163,9 +163,6 @@
   color: var(--jp-layout-color0);
   font-weight: 700;
 }
-[data-jp-theme-name*='GT COAR'] #setting-editor .jp-SettingsRawEditor .jp-Inspector {
-  height: var(--jp-ui-font-size3) !important;
-}
 
 /* meta */
 [data-jp-theme-name*='GT COAR'] input.add-tag {
