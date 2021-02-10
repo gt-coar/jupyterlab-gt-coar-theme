@@ -132,19 +132,27 @@
   display: flex;
   flex-wrap: wrap;
   position: relative;
+  padding-top: 0;
 }
 
 [data-jp-theme-name*='GT COAR'] .jp-Launcher-cwd {
-  width: 100%;
+  flex: 1 100%;
   position: sticky;
   top: 0;
+  max-height: 1em;
+}
+
+[data-jp-theme-name*='GT COAR'] .jp-Launcher-cwd > *:first-child:not(:empty) {
   background: var(--jp-layout-color0);
+  margin: 0;
+  padding: 1em 0;
 }
 
 [data-jp-theme-name*='GT COAR'] .jp-Launcher-section {
   flex: 1;
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
 }
 
 [data-jp-theme-name*='GT COAR'] .jp-Launcher-cardContainer {
@@ -154,16 +162,21 @@
 
 [data-jp-theme-name*='GT COAR'] .jp-LauncherCard {
   width: calc(var(--jp-private-launcher-card-size) * 1.618);
+  background-color: var(--jp-layout-color2);
 }
 
 [data-jp-theme-name*='GT COAR'] .jp-LauncherCard:hover,
 [data-jp-theme-name*='GT COAR'] .jp-LauncherCard:focus {
-  background-color: var(--jp-layout-color2);
-  color: var(--jp-ui-brand-color1);
+  background-color: var(--jp-brand-color);
 }
 
 [data-jp-theme-name*='GT COAR'] .jp-LauncherCard-label p {
   font-size: var(--jp-ui-font-size1);
+}
+
+[data-jp-theme-name*='GT COAR'] .jp-LauncherCard:hover p,
+[data-jp-theme-name*='GT COAR'] .jp-LauncherCard:focus p {
+  color: var(--jp-brand-color1);
 }
 
 /* settings */
@@ -194,6 +207,25 @@
   .lm-MenuBar.lm-mod-active
   .lm-MenuBar-item.lm-mod-active {
   border-top: var(--jp-border-width) solid var(--gt-gold-buzz);
+}
+
+/* debugger */
+[data-jp-theme-name*='GT COAR'] .jp-DebuggerCallstack-body ul li.selected {
+  font-weight: 700;
+  color: var(--jp-layout-color0);
+}
+
+[data-jp-theme-name*='GT COAR'] .jp-DebuggerVariables-body ul li {
+  font-family: var(--jp-code-font-family);
+}
+
+[data-jp-theme-name*='GT COAR'] .jp-DebuggerEditor-highlight {
+  background-color: var(--jp-layout-color2);
+  border-right: solid 4px var(--gt-gold-buzz);
+}
+
+[data-jp-theme-name*='GT COAR'] [data-jp-debugger='true'].jp-Editor .jp-mod-readOnly {
+  background-color: var(--jp-layout-color0);
 }
 
 /* html */

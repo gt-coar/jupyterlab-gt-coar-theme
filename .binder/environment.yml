@@ -21,7 +21,12 @@ dependencies:
   - pyflakes
   - wheel
   # demo/integration testing
-  - ipywidgets
-  - pandas
   - bqplot
+  - ipywidgets
+  - jupyter-lsp-python-plugins
+  - jupyter-videochat
+  - jupyterlab-lsp
   - nbgitpuller
+  - pandas
+  - robotkernel
+  - xeus-python
