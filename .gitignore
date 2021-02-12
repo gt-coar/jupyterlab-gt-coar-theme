@@ -12,3 +12,6 @@ lib/
 node_modules/
 untitled*
 Untitled*
+.mypy_cache/
+.virtual_documents
+.vscode

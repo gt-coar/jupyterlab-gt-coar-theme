@@ -8,7 +8,7 @@ channels:
   - nodefaults
 
 dependencies:
-  - jupyterlab ==3.*
+  - jupyterlab >=3.0.7
   - nodejs >=14,<15
   - python >=3.9,<3.10
   - doit
@@ -20,3 +20,13 @@ dependencies:
   - flake8
   - pyflakes
   - wheel
+  # demo/integration testing
+  - bqplot
+  - ipywidgets
+  - jupyter-lsp-python-plugins
+  - jupyter-videochat
+  - jupyterlab-lsp
+  - nbgitpuller
+  - pandas
+  - robotkernel
+  - xeus-python

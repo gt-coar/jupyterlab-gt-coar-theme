@@ -1,11 +1,6 @@
 # Contributing to jupyterlab-gt-coar-theme
 
-Issues (and PRs) welcome, and will be reviewed to the best of the maintainer's
-abilities/availability.
-
-## Local Development
-
-### Get an environment
+## Get an environment
 
 - get [Mambaforge](https://github.com/conda-forge/miniforge/releases)
 
@@ -13,19 +8,26 @@ abilities/availability.
 CONDARC=.github/.condarc mamba env update --file .binder/environment.yml
 ```
 
+> you _can_ use `conda` for this, but it's slower and untested
+
 Activate your environment:
 
 ```bash
-mamba activate jupyterlab-gt-coar-theme
+conda activate jupyterlab-gt-coar-theme
 ```
 
-### Use doit
+## Use doit
 
 [doit](https://pydoit.org) is used to manage everything _inside_ your environment.
 
 ```
 doit list --all --status
 ```
+
+## Make a PR
+
+Issues (and PRs) welcome, and will be reviewed to the best of the maintainers'
+abilities/availability. Please ensure you've run `doit lint` before pushing!
 
 ---
 

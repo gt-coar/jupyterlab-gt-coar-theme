@@ -1,0 +1,137 @@
+/*
+  Copyright (c) 2021 University System of Georgia and jupyterlab-gt-coar-theme contributors
+| Distributed under the terms of the BSD-3-Clause License.
+*/
+
+/* variables */
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false'] {
+  --jp-brand-color0: var(--gt-gold-buzz) !important;
+  --jp-brand-color1: var(--gt-gold-buzz-60) !important;
+  --jp-layout-color0: var(--gt-black);
+  --jp-inverse-layout-color3: var(--jp-brand-color1);
+  --jp-warn-color0: var(--gt-tertiary-horizon);
+  --jp-icon-contrast-color0: var(--jp-brand-color1);
+  --jp-content-line-height: 2;
+  --jp-content-font-family: var(--gt-font-primary);
+  --jp-ui-font-family: var(--gt-font-primary);
+  --jp-code-font-family: var(--gt-font-mono);
+  --jp-ui-font-size1: 15px;
+  --jp-ui-font-size0: 14px;
+  --jp-content-font-size1: 15px;
+  --jp-content-font-size5: 32px;
+
+  /* ui */
+  --jp-input-box-shadow: inset 0 0 2px var(--jp-brand-color0);
+  --jp-cell-editor-box-shadow: var(--jp-input-box-shadow);
+
+  /* code */
+  --jp-mirror-editor-header-color: var(--gt-gold);
+  --jp-mirror-editor-keyword-color: var(--gt-tertiary-bobby-jones);
+  --jp-mirror-editor-def-color: var(--gt-blue-link);
+  --jp-mirror-editor-error-color: var(--thwg);
+  --jp-mirror-editor-quote-color: var(--gt-tertiary-bobby-jones);
+  --jp-mirror-editor-operator-color: #c261ff;
+  --jp-mirror-editor-meta-color: #c261ff;
+  --jp-mirror-editor-comment-color: var(--gt-tertiary-burger-bowl);
+
+  --jp-cell-editor-border-color: transparent;
+
+  --jp-border-color0: transparent !important;
+  --jp-border-color1: transparent !important;
+  --jp-border-color2: transparent !important;
+  --jp-border-color3: transparent !important;
+
+  /* content */
+  --gtc-header-color: var(--gt-gold);
+  --gtc-widgets-label-color: var(--jp-brand-color1);
+  --gtc-running-color: var(--gt-blue-link-hover);
+}
+
+body[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false'] {
+  background-color: var(--gt-black);
+}
+
+/* tabs */
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false']
+  .lm-DockPanel-tabBar
+  .lm-TabBar-tab.lm-mod-current {
+  background-color: var(--jp-layout-color0);
+}
+
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false']
+  .lm-DockPanel-tabBar
+  .lm-TabBar-tab.lm-mod-current.jp-mod-active {
+  font-weight: 700;
+}
+
+/* buttons */
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false']
+  button.jp-mod-styled.jp-mod-accept {
+  background-color: var(--jp-brand-color1);
+  color: var(--gt-blue-80);
+}
+
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false']
+  button.jp-mod-styled.jp-mod-accept:hover,
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false']
+  button.jp-mod-styled.jp-mod-accept:active {
+  background-color: var(--jp-brand-color1);
+  color: var(--gt-black);
+}
+
+/* menu */
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false'] #jp-title-panel-title h1 {
+  color: var(--jp-brand-color1);
+}
+
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false']
+  .lm-MenuBar-item.lm-mod-active {
+  background-color: var(--jp-brand-color1);
+  color: var(--gt-black);
+}
+
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false']
+  .lm-MenuBar.lm-mod-active
+  .lm-MenuBar-item.lm-mod-active {
+  background-color: var(--jp-brand-color1);
+  color: var(--gt-black);
+  border-color: transparent;
+}
+
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false']
+  .lm-TabBar-tab.p-TabBar-tab {
+  border: 0;
+}
+
+/* notebook */
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false']
+  .jp-Notebook.jp-mod-editMode
+  .jp-Cell.jp-mod-active
+  .jp-InputArea-editor,
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false'] .jp-InputArea-editor {
+  border: 0;
+}
+
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false']
+  .jp-switch[aria-checked='true']
+  .jp-switch-track {
+  background-color: var(--jp-brand-color1);
+}
+
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false']
+  .jp-switch[aria-checked='true']
+  .jp-switch-track::before {
+  background-color: var(--gt-blue-link-hover);
+}
+
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false'] .jp-switch-track::before,
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false'] .jp-switch-track {
+  border: solid 1px var(--jp-brand-color1);
+}
+
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false'] .jp-switch-track::before {
+  background-color: transparent;
+  margin: 2px 3px;
+  width: 9px;
+  height: 9px;
+}
