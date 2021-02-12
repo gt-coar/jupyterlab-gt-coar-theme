@@ -1,6 +1,6 @@
 {
   "name": "@gt-coar/jupyterlab-theme",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "an unofficial Georgia Tech theme for JupyterLab",
   "dependencies": {
     "@fontsource/roboto": "~4.1.0",
