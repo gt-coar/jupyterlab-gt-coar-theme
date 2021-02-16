@@ -111,27 +111,3 @@ body[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false'] {
 [data-jp-theme-name*='GT COAR'][data-jp-theme-light='false'] .jp-InputArea-editor {
   border: 0;
 }
-
-[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false']
-  .jp-switch[aria-checked='true']
-  .jp-switch-track {
-  background-color: var(--jp-brand-color1);
-}
-
-[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false']
-  .jp-switch[aria-checked='true']
-  .jp-switch-track::before {
-  background-color: var(--gt-blue-link-hover);
-}
-
-[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false'] .jp-switch-track::before,
-[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false'] .jp-switch-track {
-  border: solid 1px var(--jp-brand-color1);
-}
-
-[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false'] .jp-switch-track::before {
-  background-color: transparent;
-  margin: 2px 3px;
-  width: 9px;
-  height: 9px;
-}
