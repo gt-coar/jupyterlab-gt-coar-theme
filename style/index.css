@@ -215,6 +215,40 @@
   border-top: var(--jp-border-width) solid var(--gt-gold-buzz);
 }
 
+/* switch */
+[data-jp-theme-name*='GT COAR'] .jp-switch {
+  height: unset;
+}
+
+[data-jp-theme-name*='GT COAR'] .jp-switch-track {
+  background-color: var(--jp-layout-color4);
+  width: 2em;
+  height: 1em;
+  margin-right: 0.1em;
+}
+
+[data-jp-theme-name*='GT COAR'] .jp-switch-track::before {
+  background-color: var(--gt-navy);
+  width: 1em;
+  height: 1em;
+  margin: 0;
+  border: 0;
+  top: 0;
+  left: 0;
+}
+
+[data-jp-theme-name*='GT COAR'] .jp-switch[aria-checked='true'] .jp-switch-track {
+  background-color: var(--jp-layout-color4);
+}
+
+[data-jp-theme-name*='GT COAR']
+  .jp-switch[aria-checked='true']
+  .jp-switch-track::before {
+  right: 0;
+  left: unset;
+  background-color: var(--gt-gold-buzz-60);
+}
+
 /* debugger */
 [data-jp-theme-name*='GT COAR'] .jp-DebuggerCallstack-body ul li.selected {
   font-weight: 700;
