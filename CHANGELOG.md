@@ -1,13 +1,22 @@
 # CHANGELOG
 
+## [0.2.1]
+
+- fixes toggle switch spacing when browser is zoomed ([#5])
+- adds custom favicons ([#6])
+
+[0.2.1]: https://pypi.org/project/jupyterlab-gt-coar-theme/0.2.0
+[#5]: https://github.com/gt-coar/jupyterlab-gt-coar-theme/issues/3
+[#6]: https://github.com/gt-coar/jupyterlab-gt-coar-theme/pull/6
+
 ## [0.2.0]
 
 - adds a dark theme ([#3])
-- handle more core components
+- handles more core components
   - debugger
   - launcher
   - moon animation
-- handle more third-party extensions
+- handles more third-party extensions
   - [ipywidgets]
   - [bqplot]
   - [jupyterlab-lsp]
