@@ -351,13 +351,15 @@
 }
 
 [data-jp-theme-name*='GT COAR'] .jp-RenderedJSON .filter {
-  position: sticky;
   float: right;
   margin-right: 0.25em;
+  opacity: 0.75;
+  position: sticky;
   right: unset;
 }
 
 [data-jp-theme-name*='GT COAR'] .jp-RenderedJSON .filter .bp3-input {
+  background-color: var(--jp-layout-color0) !important;
   min-width: 10vw;
   max-width: 33%;
 }
