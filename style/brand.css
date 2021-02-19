@@ -71,6 +71,9 @@
   --gt-font-secondary: 'Roboto Slab', var(--gt-font-fallback);
   --gt-font-mono: 'Roboto Mono', var(--jp-code-font-family-default);
 
+  /* unicode for content */
+  --gt-chevron: '\276f';
+
   /* thwg */
   --thwg: #ba0c2f;
 }
