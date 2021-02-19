@@ -89,7 +89,11 @@
   .jp-FileBrowser-toolbar.jp-Toolbar
   .jp-Toolbar-item:first-child
   .jp-ToolbarButtonComponent
-  .jp-icon3 {
+  .jp-icon3,
+[data-jp-theme-name*='GT COAR']
+  .jp-Completer-item.jp-mod-active
+  .jp-icon-selectable[fill],
+[data-jp-theme-name*='GT COAR'] .jp-Completer-item.jp-mod-active svg path[fill] {
   fill: var(--jp-layout-color0);
 }
 
