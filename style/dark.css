@@ -36,7 +36,7 @@
   /* content */
   --gtc-header-color: var(--gt-gold);
   --gtc-widgets-label-color: var(--jp-brand-color1);
-  --gtc-running-color: var(--gt-blue-link-hover);
+  --gtc-running-color: var(--jp-brand-color1);
 }
 
 body[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false'] {

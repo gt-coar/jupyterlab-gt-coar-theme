@@ -14,11 +14,13 @@
   --jp-content-font-family: var(--gt-font-primary);
   --jp-ui-font-family: var(--gt-font-primary);
   --jp-code-font-family: var(--gt-font-mono);
+  --jp-ui-font-size0: 14px;
   --jp-ui-font-size1: 15px;
   --jp-ui-font-size2: 1.2em;
   --jp-ui-font-size3: 1.5em;
   --jp-ui-font-size4: 1.9em;
   --jp-ui-font-size5: 2.2em;
+  --jp-content-font-size0: 14px;
   --jp-content-font-size1: 15px;
   --jp-content-font-size2: 1.2em;
   --jp-content-font-size3: 1.5em;
@@ -133,8 +135,13 @@
   color: var(--gtc-running-color);
   font-size: var(--jp-ui-font-size0);
   left: -0.75em !important;
-  top: 0.125em !important;
-  content: '\276f';
+  content: var(--gt-chevron);
+}
+
+[data-jp-theme-name*='GT COAR']
+  .jp-DirListing-item.jp-mod-running.jp-mod-selected
+  .jp-DirListing-itemIcon:before {
+  color: var(--jp-layout-color0);
 }
 
 /* launcher */
@@ -279,6 +286,50 @@
   background-color: var(--jp-layout-color0);
 }
 
+[data-jp-theme-name*='GT COAR']
+  [data-jp-debugger='true']
+  .CodeMirror-gutter-wrapper::after,
+[data-jp-theme-name*='GT COAR'] .jp-DebuggerEditor-marker::after,
+[data-jp-theme-name*='GT COAR'] .jp-DebuggerBreakpoint-marker::after {
+  color: var(--jp-brand-color1);
+  font-size: var(--jp-ui-font-size0);
+  content: var(--gt-chevron);
+}
+
+[data-jp-theme-name*='GT COAR'] .jp-DebuggerEditor-marker::after {
+  left: -0.6em;
+  position: relative;
+}
+
+[data-jp-theme-name*='GT COAR'] .jp-DebuggerEditor-marker:hover::after {
+  opacity: 0.5;
+}
+
+[data-jp-theme-name*='GT COAR'] .jp-DebuggerEditor-marker,
+[data-jp-theme-name*='GT COAR'] .jp-DebuggerBreakpoint-marker {
+  color: transparent;
+  font-size: var(--jp-ui-font-size0);
+}
+
+[data-jp-theme-name*='GT COAR'] .jp-DebuggerBreakpoints-body {
+  padding: 0;
+}
+
+[data-jp-theme-name*='GT COAR'] .jp-DebuggerBreakpoint {
+  padding: 0.25em 0.25em 0.25em 0;
+  font-family: var(--jp-code-font-family);
+}
+
+[data-jp-theme-name*='GT COAR']
+  .jp-DebuggerSidebar
+  .p-SplitPanel-child:nth-last-child(2) {
+  padding-bottom: 3.25em;
+}
+
+[data-jp-theme-name*='GT COAR'] .jp-DebuggerSources-body {
+  max-height: 100%;
+}
+
 /* html */
 [data-jp-theme-name*='GT COAR'] .jp-RenderedHTMLCommon table {
   font-size: var(--jp-ui-font-size1);
@@ -286,6 +337,12 @@
 
 [data-jp-theme-name*='GT COAR'] .jp-RenderedHTMLCommon blockquote {
   border-left: 5px solid var(--gt-tertiary-burger-bowl);
+}
+
+/* moonimation */
+[data-jp-theme-name*='GT COAR'] #jupyterlab-splash .planet {
+  background-color: var(--gt-gold) !important;
+  border: solid 2px var(--gt-navy);
 }
 
 /* widgets */
