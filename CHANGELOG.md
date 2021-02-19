@@ -5,7 +5,7 @@
 - improves dark mode contrast on some interactive features ([#7])
 
 [0.2.2]: https://pypi.org/project/jupyterlab-gt-coar-theme/0.2.2
-[#5]: https://github.com/gt-coar/jupyterlab-gt-coar-theme/issues/7
+[#7]: https://github.com/gt-coar/jupyterlab-gt-coar-theme/issues/7
 
 ## [0.2.1]
 
