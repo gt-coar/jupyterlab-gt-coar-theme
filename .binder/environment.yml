@@ -26,7 +26,11 @@ dependencies:
   - jupyter-lsp-python-plugins
   - jupyter-videochat
   - jupyterlab-lsp
+  - jupyterlab-tour
   - nbgitpuller
   - pandas
   - robotkernel
   - xeus-python
+  # demo jank
+  - ipython <7.20
+  - jedi <0.18

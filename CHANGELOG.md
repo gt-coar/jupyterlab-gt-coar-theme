@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [0.2.3]
+
+- fixes `code` font size in headers ([#9])
+- handles more third-party extensions
+  - [jupyterlab-tour]
+
+[0.2.3]: https://pypi.org/project/jupyterlab-gt-coar-theme/0.2.3
+[#9]: https://github.com/gt-coar/jupyterlab-gt-coar-theme/issues/9
+[jupyterlab-tour]: https://github.com/jupyterlab-contrib/jupyterlab-tour
+
 ## [0.2.2]
 
 - improves dark mode contrast on some interactive features ([#7])

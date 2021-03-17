@@ -233,6 +233,12 @@ def task_lint():
         )
 
 
+class PU:
+    @classmethod
+    def clean(cls, paths):
+        return [p for p in paths if "checkpoints" not in str(p)]
+
+
 class P:
     """paths"""
 
@@ -270,16 +276,18 @@ class P:
     ALL_YAML = [*CI.rglob("*.yml"), *BINDER.glob("*.yml")]
     ALL_PRETTIER = [*ALL_MD, *ALL_STYLE, *ALL_JSON, *ALL_YAML]
     ALL_SHELL = [BINDER / "postBuild"]
-    ALL_HEADERS = [
-        *ALL_PY,
-        *ALL_CSS,
-        *ALL_TS_SRC,
-        *ALL_MD,
-        *ALL_YAML,
-        *ALL_SHELL,
-        LICENSE,
-        SETUP_CFG,
-    ]
+    ALL_HEADERS = PU.clean(
+        [
+            *ALL_PY,
+            *ALL_CSS,
+            *ALL_TS_SRC,
+            *ALL_MD,
+            *ALL_YAML,
+            *ALL_SHELL,
+            LICENSE,
+            SETUP_CFG,
+        ]
+    )
 
     YARN_INTEGRITY = ROOT / "node_modules/.yarn-integrity"
     WEBPACK_JS = ROOT / "webpack.config.js"
