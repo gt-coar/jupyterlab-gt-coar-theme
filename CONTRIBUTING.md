@@ -16,7 +16,7 @@ Activate your environment:
 conda activate jupyterlab-gt-coar-theme
 ```
 
-## Use doit
+## Use `doit`
 
 [doit](https://pydoit.org) is used to manage everything _inside_ your environment.
 

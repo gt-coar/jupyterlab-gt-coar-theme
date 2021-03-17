@@ -48,7 +48,15 @@
 [data-jp-theme-name*='GT COAR'] samp,
 [data-jp-theme-name*='GT COAR'] pre {
   font-family: var(--jp-code-font-family);
-  font-size: var(--jp-code-font-size);
+  line-height: var(--jp-code-line-height);
+}
+
+[data-jp-theme-name*='GT COAR'] tt,
+[data-jp-theme-name*='GT COAR'] code,
+[data-jp-theme-name*='GT COAR'] kbd,
+[data-jp-theme-name*='GT COAR'] samp,
+[data-jp-theme-name*='GT COAR'] pre {
+  font-family: var(--jp-code-font-family);
   line-height: var(--jp-code-line-height);
 }
 
@@ -398,4 +406,9 @@
   --bq-font-size: 14px;
   --bq-mainheading-font-size: 18px;
   --bq-mainheading-font: 18px var(--gt-font-primary);
+}
+
+/* tour */
+[data-jp-theme-name*='GT COAR'] .react-joyride__tooltip button[data-action='primary'] {
+  color: var(--jp-layout-color0) !important;
 }
