@@ -28,7 +28,7 @@ function makeTheme(value: string): JupyterFrontEndPlugin<void> {
     id: `${NS}:${value.toLowerCase()}`,
     requires: [IThemeManager],
     autoStart: true,
-    activate: (app: JupyterFrontEnd, manager: IThemeManager) => {
+    activate: async (app: JupyterFrontEnd, manager: IThemeManager) => {
       let wasLoaded = false;
       const isLight = value == 'Light';
       let faviconIdle: HTMLLinkElement;
@@ -45,16 +45,18 @@ function makeTheme(value: string): JupyterFrontEndPlugin<void> {
           faviconBusy = document.querySelector('link.favicon.busy');
           ogFaviconBusy = `${baseUrl}static/favicons/favicon-busy-1.ico`;
         }
-        if (restore) {
-          faviconIdle.href = ogFaviconIdle;
-          faviconBusy.href = ogFaviconBusy;
-          faviconIdle.type = faviconBusy.type = OG_FAVICON_MIME;
-          jupyterFaviconIcon.svgstr = OG_FAVICON;
-        } else {
-          faviconIdle.href = WORDMARK_URL;
-          faviconBusy.href = CHEVRONS_URL;
-          faviconIdle.type = faviconBusy.type = GT_FAVICON_MIME;
-          jupyterFaviconIcon.svgstr = WORDMARK_SVG;
+        if (faviconIdle && faviconBusy) {
+          if (restore) {
+            faviconIdle.href = ogFaviconIdle;
+            faviconBusy.href = ogFaviconBusy;
+            faviconIdle.type = faviconBusy.type = OG_FAVICON_MIME;
+            jupyterFaviconIcon.svgstr = OG_FAVICON;
+          } else {
+            faviconIdle.href = WORDMARK_URL;
+            faviconBusy.href = CHEVRONS_URL;
+            faviconIdle.type = faviconBusy.type = GT_FAVICON_MIME;
+            jupyterFaviconIcon.svgstr = WORDMARK_SVG;
+          }
         }
       }
 

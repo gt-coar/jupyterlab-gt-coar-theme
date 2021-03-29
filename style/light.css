@@ -62,11 +62,15 @@
 /* menu */
 [data-jp-theme-name*='GT COAR'][data-jp-theme-light='true'] #jp-top-panel,
 [data-jp-theme-name*='GT COAR'][data-jp-theme-light='true'] #jp-menu-panel,
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='true'] #menu-panel-wrapper,
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='true'] #menu-panel,
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='true'] #top-panel-wrapper,
 [data-jp-theme-name*='GT COAR'][data-jp-theme-light='true'] .lm-MenuBar {
   background-color: var(--gt-tertiary-atlanta-fog);
 }
 
-[data-jp-theme-name*='GT COAR'][data-jp-theme-light='true'] #jp-title-panel-title h1 {
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='true'] #jp-title-panel-title h1,
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='true'] #top-panel-wrapper h1 {
   color: var(--gt-gold-buzz);
 }
 
@@ -94,4 +98,13 @@
   .lm-MenuBar.lm-mod-active
   .lm-MenuBar-item.lm-mod-active {
   border-top: var(--jp-border-width) solid var(--gt-gold-buzz);
+}
+
+/* classic */
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='true'] .jp-ClassicCheckpoint {
+  color: var(--jp-layout-color1);
+}
+
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='true'] #top-panel-wrapper {
+  border: 0;
 }

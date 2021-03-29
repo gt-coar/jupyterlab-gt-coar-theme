@@ -350,7 +350,7 @@
 /* json */
 [data-jp-theme-name*='GT COAR'] .jp-RenderedJSON {
   overflow-y: auto;
-  max-height: 100%;
+  height: 100%;
 }
 
 [data-jp-theme-name*='GT COAR'] .jp-Notebook .jp-RenderedJSON,
@@ -411,4 +411,22 @@
 /* tour */
 [data-jp-theme-name*='GT COAR'] .react-joyride__tooltip button[data-action='primary'] {
   color: var(--jp-layout-color0) !important;
+}
+
+/* classic */
+[data-jp-theme-name*='GT COAR'] #jp-ClassicLogo svg {
+  opacity: 0;
+  max-width: 2em;
+}
+
+[data-jp-theme-name*='GT COAR'] #jp-ClassicLogo {
+  background-image: url(./img/wordmark.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-jp-theme-name*='GT COAR'] #spacer-widget {
+  min-height: 0;
+  height: 0;
 }

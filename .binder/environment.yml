@@ -26,6 +26,7 @@ dependencies:
   - jupyter-lsp-python-plugins
   - jupyter-videochat
   - jupyterlab-lsp
+  - jupyterlab-classic
   - jupyterlab-tour
   - nbgitpuller
   - pandas
