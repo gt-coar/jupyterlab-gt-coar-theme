@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## [0.2.4]
+
+- fixes `JSON` rich display size ([#11])
+- handles more third-party extensions ([#12])
+  - [jupyterlab-classic]
+- uses `styleModule` ([#12])
+
+[0.2.4]: https://pypi.org/project/jupyterlab-gt-coar-theme/0.2.4
+[#11]: https://github.com/gt-coar/jupyterlab-gt-coar-theme/issues/11
+[#12]: https://github.com/gt-coar/jupyterlab-gt-coar-theme/issues/12
+[jupyterlab-classic]: https://github.com/jtpio/jupyterlab-classic
+
 ## [0.2.3]
 
 - fixes `code` font size in headers ([#9])
