@@ -110,3 +110,8 @@ body[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false'] {
   color: var(--jp-layout-color0);
   font-weight: 700;
 }
+
+/* classic */
+[data-jp-theme-name*='GT COAR'][data-jp-theme-light='false'] #top-panel-wrapper h1 {
+  color: var(--gt-gold-buzz);
+}

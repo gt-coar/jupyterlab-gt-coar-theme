@@ -1,6 +1,6 @@
 {
   "name": "@gt-coar/jupyterlab-theme",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "an unofficial Georgia Tech theme for JupyterLab",
   "dependencies": {
     "@fontsource/roboto": "~4.1.0",
@@ -55,22 +55,22 @@
     "lint": "jlpm lint:prettier",
     "lint:prettier": "prettier --write --list-different \"*.{json,yml,md}\" \"{.binder,.github,py_src,src,style}/**/*.{ts,tsx,js,jsx,css,json,md,yml}\""
   },
-  "sideEffects": [
-    "style/*.css"
-  ],
+  "sideEffects": true,
   "jupyterlab": {
     "themePath": "style/index.css",
-    "extension": "lib/index.js",
+    "extension": true,
     "discovery": {
       "server": {
         "base": {
           "name": "jupyterlab-gt-coar-theme"
         },
         "managers": [
-          "pip"
+          "pip",
+          "conda"
         ]
       }
     },
     "outputDir": "py_src/jupyterlab_gt_coar_theme/labextension"
-  }
+  },
+  "styleModule": "style/index.js"
 }
