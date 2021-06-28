@@ -23,18 +23,23 @@ dependencies:
   - nbgitpuller
   # demo/integration testing
   - bqplot
+  - cookiecutter
+  - firefox
+  - geckodriver
   - importnb
   - ipydrawio
   - ipyelk
   - ipywidgets
+  - jupyter-starters
   - jupyter-videochat
+  - jupyterlab_robotmode
   - jupyterlab-lsp
   - jupyterlab-tour
-  - jupyterlab_robotmode
-  - robotframework-lsp
   - pandas
   - python-lsp-server
   - retrolab
+  - robotframework-lsp
+  - robotframework-seleniumlibrary
   - robotkernel
   - wxyz_datagrid
   - wxyz_dvcs

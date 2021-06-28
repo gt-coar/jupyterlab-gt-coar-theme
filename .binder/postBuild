@@ -34,3 +34,10 @@ pushd wxyz
     git checkout v0.5.1
     cp -r src/wxyz_notebooks/src/wxyz/notebooks ../examples/wxyz
 popd
+
+git clone https://github.com/robots-from-jupyter/robotkernel
+
+pushd robotkernel
+    git checkout 1.5.0
+    cp -r examples ../examples/robotkernel
+popd
