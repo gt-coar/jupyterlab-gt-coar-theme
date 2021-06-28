@@ -243,9 +243,7 @@ input.add-tag {
   background-color: var(--jp-layout-color0);
 }
 
-[data-jp-theme-name*='GT COAR']
-  [data-jp-debugger='true']
-  .CodeMirror-gutter-wrapper::after,
+[data-jp-debugger='true'] .CodeMirror-gutter-wrapper::after,
 .jp-DebuggerEditor-marker::after,
 .jp-DebuggerBreakpoint-marker::after {
   color: var(--jp-brand-color1);
@@ -277,9 +275,7 @@ input.add-tag {
   font-family: var(--jp-code-font-family);
 }
 
-[data-jp-theme-name*='GT COAR']
-  .jp-DebuggerSidebar
-  .p-SplitPanel-child:nth-last-child(2) {
+.jp-DebuggerSidebar .p-SplitPanel-child:nth-last-child(2) {
   padding-bottom: 3.25em;
 }
 
