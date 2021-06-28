@@ -23,6 +23,7 @@ dependencies:
   - nbgitpuller
   # demo/integration testing
   - bqplot
+  - importnb
   - ipydrawio
   - ipyelk
   - ipywidgets
