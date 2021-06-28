@@ -9,37 +9,52 @@ import setuptools
 
 HERE = Path(__file__).parent
 MOD = "jupyterlab_gt_coar_theme"
-EXT = HERE / "py_src" / MOD / "labextension"
-PKG_JSON = EXT / "package.json"
-PKG = json.loads(PKG_JSON.read_text(encoding="utf-8"))
+VARIANTS = ["dark", "light"]
+EXTS = [
+    HERE / "py_src" / MOD / f"labextensions/{v}"
+    for v in VARIANTS
+]
+PKG_JSONS = [
+    ext / "package.json"
+    for ext in EXTS
+]
+PKGS = [
+    json.loads(pkg_json.read_text(encoding="utf-8"))
+    for pkg_json in PKG_JSONS
+]
 
-SHARE = f"""share/jupyter/labextensions/{PKG["name"]}"""
-EXT_FILES = {SHARE: ["install.json"]}
+SHARE = f"""share/jupyter/labextensions"""
+EXT_FILES = {
+    f"""{SHARE}/{pkg["name"]}""": ["install.json"]
+    for pkg in PKGS
+}
 
-for ext_path in [EXT] + [d for d in EXT.rglob("*") if d.is_dir()]:
-    if ext_path == EXT:
-        target = str(SHARE)
-    else:
-        target = f"{SHARE}/{ext_path.relative_to(EXT)}"
-    EXT_FILES[target] = [
-        str(p.relative_to(HERE).as_posix())
-        for p in ext_path.glob("*")
-        if not p.is_dir()
-    ]
+for ext, pkg in zip(EXTS, PKGS):
+    for ext_path in [ext] + [d for d in ext.rglob("*") if d.is_dir()]:
+        target = f"""{SHARE}/{pkg["name"]}"""
+        if ext_path != ext:
+            target = f"""{target}/{ext_path.relative_to(ext)}"""
+        EXT_FILES[target] = [
+            str(p.relative_to(HERE).as_posix())
+            for p in ext_path.glob("*")
+            if not p.is_dir()
+        ]
+
+DATA_FILES = sorted([(k, v) for k, v in EXT_FILES.items()])
 
 SETUP_ARGS = dict(
-    name=PKG["jupyterlab"]["discovery"]["server"]["base"]["name"],
-    description=PKG["description"],
-    version=PKG["version"],
-    url=PKG["homepage"],
-    license=PKG["license"],
-    data_files=[(k, v) for k, v in EXT_FILES.items()],
+    name=PKGS[0]["jupyterlab"]["discovery"]["server"]["base"]["name"],
+    description=PKGS[0]["description"],
+    version=PKGS[0]["version"],
+    url=PKGS[0]["homepage"],
+    license=PKGS[0]["license"],
+    data_files=DATA_FILES,
     project_urls={
-        "Bug Tracker": PKG["bugs"]["url"],
-        "Source Code": PKG["repository"]["url"]
+        "Bug Tracker": PKGS[0]["bugs"]["url"],
+        "Source Code": PKGS[0]["repository"]["url"]
     },
-    author=PKG["author"]["name"],
-    author_email=PKG["author"]["email"]
+    author=re.findall(r'^[^<]+', PKGS[0]["author"])[0].strip(),
+    author_email=re.findall(r'<(.*)>$', PKGS[0]["author"])[0].strip()
 )
 
 

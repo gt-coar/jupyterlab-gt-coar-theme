@@ -1,0 +1,74 @@
+/*
+  Copyright (c) 2021 University System of Georgia and jupyterlab-gt-coar-theme contributors
+| Distributed under the terms of the BSD-3-Clause License.
+*/
+@import '~@gt-coar/jupyterlab-theme-brand/style/index.css';
+@import './variables.css';
+
+/* tabs */
+.lm-DockPanel-tabBar .lm-TabBar-tab.lm-mod-current {
+  background-color: var(--jp-layout-color0);
+}
+
+.lm-DockPanel-tabBar .lm-TabBar-tab.lm-mod-current.jp-mod-active {
+  font-weight: 700;
+}
+
+/* buttons */
+button.jp-mod-styled.jp-mod-accept {
+  background-color: var(--gt-blue-80);
+  color: var(--gt-gold-buzz-60);
+}
+
+button.jp-mod-styled.jp-mod-accept:hover,
+button.jp-mod-styled.jp-mod-accept:active {
+  background-color: var(--gt-blue-link-hover);
+  color: var(--gt-white);
+}
+
+/* menu */
+#jp-top-panel,
+#jp-menu-panel,
+#menu-panel-wrapper,
+#menu-panel,
+#top-panel-wrapper,
+.lm-MenuBar {
+  background-color: var(--gt-tertiary-atlanta-fog);
+}
+
+#jp-title-panel-title h1,
+#top-panel-wrapper h1 {
+  color: var(--gt-gold-buzz);
+}
+
+.lm-MenuBar-item.lm-mod-active {
+  background-color: var(--gt-blue-link-hover);
+  color: var(--gt-superlight-grey);
+}
+
+.lm-MenuBar {
+  color: var(--gt-superlight-grey);
+}
+
+.lm-MenuBar.lm-mod-active .lm-MenuBar-item.lm-mod-active {
+  background-color: var(--gt-blue-link-hover);
+  color: var(--gt-superlight-grey);
+  border-color: transparent;
+}
+
+/* simple */
+
+.jp-LabShell[data-shell-mode='single-document']
+  .lm-MenuBar.lm-mod-active
+  .lm-MenuBar-item.lm-mod-active {
+  border-top: var(--jp-border-width) solid var(--gt-gold-buzz);
+}
+
+/* classic */
+.jp-ClassicCheckpoint {
+  color: var(--jp-layout-color1);
+}
+
+#top-panel-wrapper {
+  border: 0;
+}

@@ -3,34 +3,32 @@
 | Distributed under the terms of the BSD-3-Clause License.
 */
 
+import { LabIcon, jupyterFaviconIcon } from '@jupyterlab/ui-components';
 import { JupyterFrontEnd, JupyterFrontEndPlugin } from '@jupyterlab/application';
 import { IThemeManager } from '@jupyterlab/apputils';
 import { PageConfig } from '@jupyterlab/coreutils';
-import { LabIcon, jupyterFaviconIcon } from '@jupyterlab/ui-components';
 
 import {
-  NS,
   NAME,
   WORDMARK_SVG,
   WORDMARK_ICON_ID,
   CHEVRONS_URL,
   WORDMARK_URL,
+  IThemeOptions,
 } from './tokens';
 
 export const GT_ICON = new LabIcon({ name: WORDMARK_ICON_ID, svgstr: WORDMARK_SVG });
 
-const OG_FAVICON = jupyterFaviconIcon.svgstr;
-const OG_FAVICON_MIME = 'image/x-icon';
-const GT_FAVICON_MIME = 'image/svg+xml';
+export const OG_FAVICON = jupyterFaviconIcon.svgstr;
+export const OG_FAVICON_MIME = 'image/x-icon';
+export const GT_FAVICON_MIME = 'image/svg+xml';
 
-function makeTheme(value: string): JupyterFrontEndPlugin<void> {
+export function makeTheme(opts: IThemeOptions): JupyterFrontEndPlugin<void> {
   return {
-    id: `${NS}:${value.toLowerCase()}`,
+    id: `${opts.ns}:${opts.variant.toLowerCase()}`,
     requires: [IThemeManager],
     autoStart: true,
     activate: async (app: JupyterFrontEnd, manager: IThemeManager) => {
-      let wasLoaded = false;
-      const isLight = value == 'Light';
       let faviconIdle: HTMLLinkElement;
       let faviconBusy: HTMLLinkElement;
 
@@ -61,14 +59,12 @@ function makeTheme(value: string): JupyterFrontEndPlugin<void> {
       }
 
       manager.register({
-        name: `${NAME} ${value}`,
-        isLight,
-        themeScrollbars: !isLight,
+        name: `${NAME} (${opts.variant})`,
+        isLight: opts.isLight,
+        themeScrollbars: true,
         load: async () => {
           toggleFavicons();
-          // avoid loading twice
-          wasLoaded ? void 0 : manager.loadCSS(`${NS}/index.css`);
-          wasLoaded = true;
+          return manager.loadCSS(`${opts.ns}/index.css`);
         },
         unload: async () => {
           if (jupyterFaviconIcon.svgstr === WORDMARK_SVG) {
@@ -79,7 +75,3 @@ function makeTheme(value: string): JupyterFrontEndPlugin<void> {
     },
   };
 }
-
-const extensions = ['Light', 'Dark'].map(makeTheme);
-
-export default extensions;

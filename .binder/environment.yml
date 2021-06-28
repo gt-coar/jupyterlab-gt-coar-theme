@@ -4,8 +4,7 @@
 name: jupyterlab-gt-coar-theme
 
 channels:
-  - conda-forge
-  - nodefaults
+  - https://conda.anaconda.org/conda-forge
 
 dependencies:
   - jupyterlab >=3.0.7
@@ -20,18 +19,21 @@ dependencies:
   - flake8
   - pyflakes
   - wheel
+  # binder biz
+  - nbgitpuller
   # demo/integration testing
   - bqplot
+  - ipydrawio
+  - ipyelk
   - ipywidgets
   - jupyter-lsp-python-plugins
   - jupyter-videochat
   - jupyterlab-lsp
-  - jupyterlab-classic
   - jupyterlab-tour
-  - nbgitpuller
   - pandas
+  - retrolab
   - robotkernel
+  - wxyz_datagrid
+  - wxyz_json_schema_form
+  - wxyz_lab
   - xeus-python
-  # demo jank
-  - ipython <7.20
-  - jedi <0.18

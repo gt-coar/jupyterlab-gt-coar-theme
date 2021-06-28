@@ -4,7 +4,10 @@
 import json
 from pathlib import Path
 
-__js__ = json.loads(
-    (Path(__file__).parent / "labextension/package.json").read_text(encoding="utf-8")
-)
-__version__ = __js__["version"]
+__js__ = [
+    json.loads(pkg_json.read_text(encoding="utf-8"))
+    for pkg_json in sorted(Path(__file__).parent.glob("labextensions/*/package.json"))
+]
+
+# have to pick one
+__version__ = __js__[0]["version"]
