@@ -362,13 +362,13 @@ input.add-tag {
   color: var(--jp-layout-color0) !important;
 }
 
-/* classic */
-#jp-ClassicLogo svg {
+/* retro */
+#jp-jp-RetroLogo svg {
   opacity: 0;
   max-width: 2em;
 }
 
-#jp-ClassicLogo {
+#jp-RetroLogo {
   background-image: url(./img/wordmark.svg);
   background-size: contain;
   background-repeat: no-repeat;

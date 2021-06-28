@@ -34,6 +34,12 @@ dependencies:
   - retrolab
   - robotkernel
   - wxyz_datagrid
+  - wxyz_dvcs
+  - wxyz_json_e
   - wxyz_json_schema_form
+  - wxyz_jsonld
   - wxyz_lab
+  - wxyz_svg
+  - wxyz_tpl_jinja
+  - wxyz_yaml
   - xeus-python

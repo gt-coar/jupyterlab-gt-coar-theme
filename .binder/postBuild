@@ -27,3 +27,10 @@ pushd bqplot
     git checkout 0.12.29
     cp -r examples ../examples/bqplot
 popd
+
+git clone https://github.com/deathbeds/wxyz
+
+pushd wxyz
+    git checkout v0.5.1
+    cp -r src/wxyz_notebooks/src/wxyz/notebooks ../examples/wxyz
+popd

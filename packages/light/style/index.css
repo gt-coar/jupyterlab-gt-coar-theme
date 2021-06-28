@@ -64,8 +64,8 @@ button.jp-mod-styled.jp-mod-accept:active {
   border-top: var(--jp-border-width) solid var(--gt-gold-buzz);
 }
 
-/* classic */
-.jp-ClassicCheckpoint {
+/* retro */
+.jp-RetroCheckpoint {
   color: var(--jp-layout-color1);
 }
 
