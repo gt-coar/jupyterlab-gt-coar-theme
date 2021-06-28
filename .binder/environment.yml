@@ -27,7 +27,6 @@ dependencies:
   - ipydrawio
   - ipyelk
   - ipywidgets
-  - jupyter-lsp-python-plugins
   - jupyter-videochat
   - jupyterlab-lsp
   - jupyterlab-tour

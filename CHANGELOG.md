@@ -4,6 +4,7 @@
 
 - fixes selectors to avoid broken variable redefinitions ([#13])
 - breaks up into multiple packages ([#14])
+- themes presentation/single-document mode ([#14])
 
 [0.3.0]: https://pypi.org/project/jupyterlab-gt-coar-theme/0.3.0
 [#13]: https://github.com/gt-coar/jupyterlab-gt-coar-theme/issues/13
