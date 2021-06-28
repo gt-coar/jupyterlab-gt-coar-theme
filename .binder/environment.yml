@@ -31,6 +31,7 @@ dependencies:
   - jupyterlab-lsp
   - jupyterlab-tour
   - pandas
+  - python-lsp-server
   - retrolab
   - robotkernel
   - wxyz_datagrid
