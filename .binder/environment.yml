@@ -23,14 +23,12 @@ dependencies:
   - nbgitpuller
   # demo/integration testing
   - bqplot
-  - cookiecutter
   - firefox
   - geckodriver
   - importnb
   - ipydrawio
   - ipyelk
   - ipywidgets
-  - jupyter-starters
   - jupyter-videochat
   - jupyterlab_robotmode
   - jupyterlab-lsp

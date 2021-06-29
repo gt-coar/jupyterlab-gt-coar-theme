@@ -24,14 +24,19 @@ conda install -c conda-forge jupyterlab-gt-coar-theme
 
 ## Screenshots
 
-| Light                                                | Dark                                               |
-| ---------------------------------------------------- | -------------------------------------------------- |
-| ![a screenshot of the light theme][screenshot-light] | ![a screenshot of the dark theme][screenshot-dark] |
+|         Mode | Light                                                                  | Dark                                                                 |
+| -----------: | ---------------------------------------------------------------------- | -------------------------------------------------------------------- |
+|         Full | ![a screenshot of the light theme][screenshot-light]                   | ![a screenshot of the dark theme][screenshot-dark]                   |
+| Presentation | ![a screenshot of the light presentation theme][screenshot-light-prez] | ![a screenshot of the dark presentation theme][screenshot-dark-prez] |
 
 [screenshot-light]:
   https://user-images.githubusercontent.com/7581399/106806206-a6a40900-6635-11eb-9e49-1c60fde1c1c5.png
 [screenshot-dark]:
   https://user-images.githubusercontent.com/7581399/107781115-864f0b00-6d15-11eb-998b-789bc24ba921.png
+[screenshot-light-prez]:
+  https://user-images.githubusercontent.com/7581399/123836581-dcdd7000-d8d7-11eb-8e8a-a5c4ad708733.png
+[screenshot-dark-prez]:
+  https://user-images.githubusercontent.com/7581399/123836579-dc44d980-d8d7-11eb-91e6-c6d81799e613.png
 
 ## Usage
 

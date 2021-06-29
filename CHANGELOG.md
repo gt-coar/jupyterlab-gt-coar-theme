@@ -5,10 +5,13 @@
 - fixes selectors to avoid broken variable redefinitions ([#13])
 - breaks up into multiple packages ([#14])
 - themes presentation/single-document mode ([#14])
+- handles more third-party extensions
+  - [ipyelk]
 
 [0.3.0]: https://pypi.org/project/jupyterlab-gt-coar-theme/0.3.0
 [#13]: https://github.com/gt-coar/jupyterlab-gt-coar-theme/issues/13
 [#14]: https://github.com/gt-coar/jupyterlab-gt-coar-theme/pull/14
+[ipyelk]: https://github.com/jupyrdf/ipyelk
 
 ## [0.2.4]
 
