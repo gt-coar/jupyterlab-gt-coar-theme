@@ -1,0 +1,380 @@
+/*
+  Copyright (c) 2021 University System of Georgia and jupyterlab-gt-coar-theme contributors
+| Distributed under the terms of the BSD-3-Clause License.
+*/
+@import './fonts.css';
+@import './brand.css';
+@import './variables.css';
+@import './presentation.css';
+
+/* code */
+tt,
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--jp-code-font-family);
+  line-height: var(--jp-code-line-height);
+}
+
+tt,
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--jp-code-font-family);
+  line-height: var(--jp-code-line-height);
+}
+
+div.CodeMirror span.CodeMirror-matchingbracket {
+  color: var(--gt-blue-link-hover);
+}
+
+.CodeMirror-cursor {
+  border-left-width: var(--jp-code-cursor-width0);
+}
+
+/* headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--gt-font-secondary);
+  font-weight: 700;
+  color: var(--gtc-header-color);
+}
+
+/* menu */
+#jp-MainLogo {
+  background-image: url('./img/wordmark.svg');
+  background-size: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#jp-MainLogo g {
+  visibility: hidden;
+}
+
+/* selected icons */
+.jp-DirListing-item.jp-mod-selected .jp-icon-selectable[fill],
+#setting-editor .jp-PluginList li.jp-mod-selected .jp-icon-selectable[fill],
+.jp-FileBrowser-toolbar.jp-Toolbar
+  .jp-Toolbar-item:first-child
+  .jp-ToolbarButtonComponent
+  .jp-icon3,
+.jp-Completer-item.jp-mod-active .jp-icon-selectable[fill],
+.jp-Completer-item.jp-mod-active svg path[fill] {
+  fill: var(--jp-layout-color0);
+}
+
+[data-command='help:open'] {
+  color: var(--jp-warn-color0);
+}
+
+.p-Menu-itemShortcut:not(:empty) {
+  font-family: var(--jp-code-font-family);
+  color: var(--jp-ui-font-color2);
+  font-size: var(--jp-ui-font-size0);
+  padding: 0.125em 0.5em;
+  text-align: center;
+}
+
+/* commands */
+.lm-CommandPalette-wrapper::after {
+  background-color: var(--gt-gold-buzz-60);
+}
+
+/* files */
+.jp-DirListing-item.jp-mod-selected {
+  font-weight: 700;
+  color: var(--jp-layout-color0);
+}
+
+/* running */
+.jp-DirListing-item.jp-mod-running .jp-DirListing-itemIcon:before {
+  color: var(--gtc-running-color);
+  font-size: var(--jp-ui-font-size0);
+  left: -0.75em !important;
+  content: var(--gt-chevron);
+}
+
+.jp-DirListing-item.jp-mod-running.jp-mod-selected .jp-DirListing-itemIcon:before {
+  color: var(--jp-layout-color0);
+}
+
+/* launcher */
+.jp-Launcher-body {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  position: relative;
+  --gt-launcher-cwd-height: calc(var(--jp-ui-font-size1) * 4);
+}
+
+.jp-Launcher-content {
+  flex: 1;
+  overflow-y: auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: var(--gt-launcher-cwd-height);
+}
+
+.jp-Launcher-cwd {
+  position: absolute;
+  right: 1em;
+  top: 0;
+  left: var(--jp-private-launcher-side-padding);
+  height: var(--gt-launcher-cwd-height);
+}
+
+.jp-Launcher-cwd > *:first-child:not(:empty) {
+  background: var(--jp-layout-color0);
+  margin: 0;
+  padding: 1em 0;
+}
+
+.jp-Launcher-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+}
+
+.jp-Launcher-cardContainer {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.jp-LauncherCard {
+  width: calc(var(--jp-private-launcher-card-size) * 1.618);
+  background-color: var(--jp-layout-color0);
+}
+
+.jp-LauncherCard:hover,
+.jp-LauncherCard:focus {
+  background-color: var(--jp-layout-color2);
+}
+
+.jp-LauncherCard-label p {
+  font-size: var(--jp-ui-font-size1);
+  font-weight: 700;
+}
+
+/* settings */
+#setting-editor .jp-PluginList li.jp-mod-selected {
+  color: var(--jp-layout-color0);
+  font-weight: 700;
+}
+
+/* meta */
+input.add-tag {
+  min-width: 5em;
+}
+
+.tag.applied-tag:hover {
+  text-decoration: line-through;
+  background-color: var(--jp-warn-color0);
+  color: var(--jp-layout-color0);
+}
+
+.tag.applied-tag:hover svg {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+/* simple */
+.jp-LabShell[data-shell-mode='single-document']
+  .lm-MenuBar.lm-mod-active
+  .lm-MenuBar-item.lm-mod-active {
+  border-top: var(--jp-border-width) solid var(--gt-gold-buzz);
+}
+
+/* switch */
+.jp-switch {
+  height: unset;
+}
+
+.jp-switch-track {
+  background-color: var(--jp-layout-color4);
+  width: 2em;
+  height: 1em;
+  margin-right: 0.1em;
+}
+
+.jp-switch-track::before {
+  background-color: var(--gt-navy);
+  width: 1em;
+  height: 1em;
+  margin: 0;
+  border: 0;
+  top: 0;
+  left: 0;
+}
+
+.jp-switch[aria-checked='true'] .jp-switch-track {
+  background-color: var(--jp-layout-color4);
+}
+
+.jp-switch[aria-checked='true'] .jp-switch-track::before {
+  right: 0;
+  left: unset;
+  background-color: var(--gt-gold-buzz-60);
+}
+
+/* debugger */
+.jp-DebuggerCallstack-body ul li.selected {
+  font-weight: 700;
+  color: var(--jp-layout-color0);
+}
+
+.jp-DebuggerVariables-body ul li {
+  font-family: var(--jp-code-font-family);
+}
+
+.jp-DebuggerEditor-highlight {
+  background-color: var(--jp-layout-color2);
+  border-right: solid 4px var(--gt-gold-buzz);
+}
+
+[data-jp-debugger='true'].jp-Editor .jp-mod-readOnly {
+  background-color: var(--jp-layout-color0);
+}
+
+[data-jp-debugger='true'] .CodeMirror-gutter-wrapper::after,
+.jp-DebuggerEditor-marker::after,
+.jp-DebuggerBreakpoint-marker::after {
+  color: var(--jp-brand-color1);
+  font-size: var(--jp-ui-font-size0);
+  content: var(--gt-chevron);
+}
+
+.jp-DebuggerEditor-marker::after {
+  left: -0.6em;
+  position: relative;
+}
+
+.jp-DebuggerEditor-marker:hover::after {
+  opacity: 0.5;
+}
+
+.jp-DebuggerEditor-marker,
+.jp-DebuggerBreakpoint-marker {
+  color: transparent;
+  font-size: var(--jp-ui-font-size0);
+}
+
+.jp-DebuggerBreakpoints-body {
+  padding: 0;
+}
+
+.jp-DebuggerBreakpoint {
+  padding: 0.25em 0.25em 0.25em 0;
+  font-family: var(--jp-code-font-family);
+}
+
+.jp-DebuggerSidebar .p-SplitPanel-child:nth-last-child(2) {
+  padding-bottom: 3.25em;
+}
+
+.jp-DebuggerSources-body {
+  max-height: 100%;
+}
+
+/* html */
+.jp-RenderedHTMLCommon table {
+  font-size: var(--jp-ui-font-size1);
+}
+
+.jp-RenderedHTMLCommon blockquote {
+  border-left: 5px solid var(--gt-tertiary-burger-bowl);
+}
+
+/* json */
+.jp-RenderedJSON {
+  overflow-y: auto;
+  height: 100%;
+}
+
+.jp-Notebook .jp-RenderedJSON,
+.jp-CodeConsole .jp-RenderedJSON {
+  max-height: 75vh;
+}
+
+.jp-RenderedJSON .filter {
+  float: right;
+  margin-right: 0.25em;
+  opacity: 0.75;
+  position: sticky;
+  right: unset;
+}
+
+.jp-RenderedJSON .filter .bp3-input {
+  background-color: var(--jp-layout-color0) !important;
+  min-width: 10vw;
+  max-width: 33%;
+}
+
+/* moonimation */
+#jupyterlab-splash .planet {
+  background-color: var(--gt-gold) !important;
+  border: solid 2px var(--gt-navy);
+}
+
+/* widgets */
+.jupyter-widgets {
+  --jp-widgets-font-size: var(--jp-ui-font-size2);
+  --jp-widgets-input-background-color: var(--jp-layout-color2);
+  --jp-widgets-input-color: var(--jp-ui-font-color0);
+  --jp-widgets-label-color: var(--gtc-widgets-label-color);
+  --jp-widgets-readout-color: var(--jp-ui-font-color0);
+  --jp-widgets-slider-active-handle-color: var(--gtc-widgets-label-color);
+  --jp-widgets-slider-border-width: 2px;
+  --jp-widgets-slider-handle-background-color: var(--jp-layout-color0);
+  --jp-widgets-slider-handle-border-color: var(--gtc-widgets-label-color);
+  --jp-widgets-color: var(--jp-ui-font-color0);
+  font-family: var(--jp-ui-font-family);
+}
+
+.jupyter-widgets .widget-label {
+  font-weight: 700;
+  width: unset;
+}
+
+/* bqplot */
+[data-jp-theme-light='false'],
+[data-jp-theme-light='true'] {
+  --bq-axislabel-font: 16px var(--gt-font-primary);
+  --bq-axislabel-font-size: 16px;
+  --bq-content-font-color: var(--gtc-widgets-label-color);
+  --bq-font: 14px var(--gt-font-secondary);
+  --bq-font-size: 14px;
+  --bq-mainheading-font-size: 18px;
+  --bq-mainheading-font: 18px var(--gt-font-primary);
+}
+
+/* tour */
+.react-joyride__tooltip button[data-action='primary'] {
+  color: var(--jp-layout-color0) !important;
+}
+
+/* retro */
+#jp-RetroLogo svg {
+  opacity: 0;
+  max-width: 2em;
+}
+
+#jp-RetroLogo {
+  background-image: url(./img/wordmark.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#spacer-widget {
+  min-height: 0;
+  height: 0;
+}

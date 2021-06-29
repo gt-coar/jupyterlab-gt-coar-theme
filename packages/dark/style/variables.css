@@ -1,0 +1,119 @@
+/*
+  Copyright (c) 2021 University System of Georgia and jupyterlab-gt-coar-theme contributors
+| Distributed under the terms of the BSD-3-Clause License.
+*/
+
+:root {
+  --jp-accent-color0: var(--md-green-700);
+  --jp-accent-color1: var(--md-green-500);
+  --jp-border-color0: var(--md-grey-700);
+  --jp-border-color1: var(--md-grey-700);
+  --jp-border-color2: var(--md-grey-800);
+  --jp-border-color3: var(--md-grey-900);
+  --jp-brand-color0: var(--md-blue-700);
+  --jp-brand-color1: var(--md-blue-500);
+  --jp-cell-editor-background: var(--jp-layout-color1);
+  --jp-cell-editor-border-color: var(--md-grey-700);
+  --jp-cell-prompt-not-active-font-color: var(--md-grey-300);
+  --jp-cell-prompt-not-active-opacity: 1;
+  --jp-content-font-color0: rgba(255, 255, 255, 1);
+  --jp-content-font-color1: rgba(255, 255, 255, 1);
+  --jp-content-font-color2: rgba(255, 255, 255, 0.7);
+  --jp-content-font-color3: rgba(255, 255, 255, 0.5);
+  --jp-content-link-color: var(--md-blue-300);
+  --jp-dialog-background: rgba(0, 0, 0, 0.6);
+  --jp-editor-selected-background: var(--jp-layout-color2);
+  --jp-editor-selected-focused-background: rgba(33, 150, 243, 0.24);
+  --jp-error-color0: var(--md-red-700);
+  --jp-error-color1: var(--md-red-500);
+  --jp-info-color0: var(--md-cyan-700);
+  --jp-info-color1: var(--md-cyan-500);
+  --jp-input-active-background: var(--jp-layout-color0);
+  --jp-input-background: var(--md-grey-800);
+  --jp-input-hover-background: var(--jp-layout-color2);
+  --jp-inverse-layout-color0: white;
+  --jp-inverse-layout-color1: white;
+  --jp-inverse-layout-color2: var(--md-grey-200);
+  --jp-inverse-layout-color3: var(--md-grey-400);
+  --jp-layout-color0: #111111;
+  --jp-layout-color1: var(--md-grey-900);
+  --jp-layout-color2: var(--md-grey-800);
+  --jp-layout-color3: var(--md-grey-700);
+  --jp-mirror-editor-atom-color: var(--md-blue-300);
+  --jp-mirror-editor-attribute-color: var(--md-blue-700);
+  --jp-mirror-editor-builtin-color: var(--md-green-600);
+  --jp-mirror-editor-def-color: var(--md-blue-600);
+  --jp-mirror-editor-header-color: var(--md-blue-500);
+  --jp-mirror-editor-keyword-color: var(--md-green-500);
+  --jp-mirror-editor-link-color: var(--md-blue-700);
+  --jp-mirror-editor-number-color: var(--md-green-400);
+  --jp-mirror-editor-property-color: var(--md-blue-400);
+  --jp-mirror-editor-punctuation-color: var(--md-blue-400);
+  --jp-mirror-editor-quote-color: var(--md-green-300);
+  --jp-mirror-editor-string-2-color: var(--md-purple-300);
+  --jp-mirror-editor-string-color: #ff7070;
+  --jp-mirror-editor-tag-color: var(--md-green-700);
+  --jp-mirror-editor-variable-2-color: var(--md-blue-400);
+  --jp-mirror-editor-variable-3-color: var(--md-green-600);
+  --jp-mirror-editor-variable-color: var(--md-grey-300);
+  --jp-notebook-multiselected-color: rgba(33, 150, 243, 0.24);
+  --jp-rendermime-error-background: rgba(244, 67, 54, 0.28);
+  --jp-rendermime-table-row-background: var(--md-grey-900);
+  --jp-rendermime-table-row-hover-background: rgba(3, 169, 244, 0.2);
+  --jp-scrollbar-background-color: #3f4244 !important;
+  --jp-scrollbar-endpad: 3px; /* the minimum gap between the thumb and the ends of a scrollbar */
+  --jp-scrollbar-thumb-color: 88, 96, 97 !important; /* need to specify thumb color as an RGB triplet */
+  --jp-scrollbar-thumb-margin: 3.5px; /* the space in between the sides of the thumb and the track */
+  --jp-scrollbar-thumb-radius: 9px; /* set to a large-ish value for rounded endcaps on the thumb */
+  --jp-search-selected-match-background-color: rgb(255, 225, 0);
+  --jp-search-toggle-off-opacity: 0.6;
+  --jp-shadow-base-lightness: 32;
+  --jp-success-color0: var(--md-green-700);
+  --jp-success-color1: var(--md-green-500);
+  --jp-toolbar-active-background: var(--jp-layout-color0);
+  --jp-toolbar-border-color: var(--jp-border-color2);
+  --jp-toolbar-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.8);
+  --jp-ui-font-color0: rgba(255, 255, 255, 1);
+  --jp-ui-font-color1: rgba(255, 255, 255, 0.87);
+  --jp-ui-font-color2: rgba(255, 255, 255, 0.54);
+  --jp-ui-font-color3: rgba(255, 255, 255, 0.38);
+  --jp-ui-inverse-font-color0: rgba(0, 0, 0, 1);
+  --jp-ui-inverse-font-color1: rgba(0, 0, 0, 0.8);
+  --jp-ui-inverse-font-color2: rgba(0, 0, 0, 0.5);
+  --jp-ui-inverse-font-color3: rgba(0, 0, 0, 0.3);
+  --jp-vega-background: var(--md-grey-400);
+  --jp-warn-color0: var(--md-orange-700);
+  --jp-warn-color1: var(--md-orange-500);
+  --jp-brand-color0: var(--gt-gold-buzz) !important;
+  --jp-brand-color1: var(--gt-gold-buzz-60) !important;
+  --jp-layout-color0: var(--gt-black);
+  --jp-inverse-layout-color3: var(--jp-brand-color1);
+  --jp-warn-color0: var(--gt-tertiary-horizon);
+  --jp-icon-contrast-color0: var(--jp-brand-color1);
+
+  /* ui */
+  --jp-input-box-shadow: inset 0 0 2px var(--jp-brand-color0);
+  --jp-cell-editor-box-shadow: var(--jp-input-box-shadow);
+
+  /* code */
+  --jp-mirror-editor-header-color: var(--gt-gold);
+  --jp-mirror-editor-keyword-color: var(--gt-tertiary-bobby-jones);
+  --jp-mirror-editor-def-color: var(--gt-blue-link);
+  --jp-mirror-editor-error-color: var(--thwg);
+  --jp-mirror-editor-quote-color: var(--gt-tertiary-bobby-jones);
+  --jp-mirror-editor-operator-color: #c261ff;
+  --jp-mirror-editor-meta-color: #c261ff;
+  --jp-mirror-editor-comment-color: var(--gt-tertiary-burger-bowl);
+
+  --jp-cell-editor-border-color: transparent;
+
+  --jp-border-color0: transparent !important;
+  --jp-border-color1: transparent !important;
+  --jp-border-color2: transparent !important;
+  --jp-border-color3: transparent !important;
+
+  /* content */
+  --gtc-header-color: var(--gt-gold);
+  --gtc-widgets-label-color: var(--jp-brand-color1);
+  --gtc-running-color: var(--jp-brand-color1);
+}

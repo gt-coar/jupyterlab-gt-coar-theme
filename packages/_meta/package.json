@@ -1,0 +1,30 @@
+{
+  "private": true,
+  "name": "@gt-coar/jupyterlab-theme-meta",
+  "version": "0.3.0",
+  "description": "[meta] an unofficial Georgia Tech theme for JupyterLab",
+  "license": "BSD-3-Clause",
+  "author": "jupyterlab-gt-coar-theme contributors <coar@gaetch.edu>",
+  "homepage": "https://github.com/gt-coar/jupyterlab-gt-coar-theme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gt-coar/jupyterlab-gt-coar-theme"
+  },
+  "bugs": {
+    "url": "https://github.com/gt-coar/jupyterlab-gt-coar-theme/issues"
+  },
+  "main": "lib/index.js",
+  "files": [
+    "{lib,style,src}/**/*.{.ts,eot,gif,html,jpg,js,js.map,json,png,svg,woff2,ttf,css}"
+  ],
+  "scripts": {
+    "build:lib": "tsc -b",
+    "watch:lib": "tsc -b -w --preserveWatchOutput"
+  },
+  "types": "lib/index.d.ts",
+  "dependencies": {
+    "@gt-coar/jupyterlab-theme-brand": "file:../brand",
+    "@gt-coar/jupyterlab-theme-dark": "file:../dark",
+    "@gt-coar/jupyterlab-theme-light": "file:../light"
+  }
+}

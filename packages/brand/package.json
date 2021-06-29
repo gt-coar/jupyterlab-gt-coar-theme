@@ -1,0 +1,35 @@
+{
+  "name": "@gt-coar/jupyterlab-theme-brand",
+  "version": "0.3.0",
+  "description": "branding assets for an unofficial Georgia Tech theme for JupyterLab",
+  "license": "BSD-3-Clause",
+  "author": "jupyterlab-gt-coar-theme contributors <coar@gaetch.edu>",
+  "homepage": "https://github.com/gt-coar/jupyterlab-gt-coar-theme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gt-coar/jupyterlab-gt-coar-theme"
+  },
+  "bugs": {
+    "url": "https://github.com/gt-coar/jupyterlab-gt-coar-theme/issues"
+  },
+  "main": "lib/index.js",
+  "files": [
+    "{lib,style,src}/**/*.{.ts,eot,gif,html,jpg,js,js.map,json,png,svg,woff2,ttf,css}"
+  ],
+  "types": "lib/index.d.ts",
+  "dependencies": {
+    "@fontsource/roboto": "~4.1.0",
+    "@fontsource/roboto-mono": "^4.1.1",
+    "@fontsource/roboto-slab": "~4.1.1",
+    "@jupyterlab/application": "3"
+  },
+  "devDependencies": {
+    "base64-inline-loader": "^1.1.1"
+  },
+  "keywords": [
+    "georgia-tech",
+    "jupyter",
+    "jupyterlab",
+    "jupyterlab-extension"
+  ]
+}

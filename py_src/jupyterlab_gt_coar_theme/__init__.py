@@ -5,7 +5,10 @@ from ._version import __js__, __version__
 
 
 def _jupyter_labextension_paths():
-    return [{"src": "labextension", "dest": __js__["name"]}]
+    return [
+        {"src": f"""labextensions/{pkg["name"].split("-")[-1]}""", "dest": pkg["name"]}
+        for pkg in __js__
+    ]
 
 
 __all__ = ["__version__", "__js__"]

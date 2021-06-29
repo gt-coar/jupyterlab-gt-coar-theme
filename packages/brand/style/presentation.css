@@ -1,0 +1,87 @@
+/*
+  Copyright (c) 2021 University System of Georgia and jupyterlab-gt-coar-theme contributors
+| Distributed under the terms of the BSD-3-Clause License.
+*/
+
+/* hide these entirely unless hovered */
+.jp-mod-presentationMode .jp-SideBar,
+.jp-mod-presentationMode #jp-MainMenu,
+.jp-mod-presentationMode #jp-top-panel,
+.jp-mod-presentationMode #jp-menu-panel,
+.jp-mod-presentationMode #jp-bottom-panel {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+/* suggest these, if visible */
+.jp-mod-presentationMode #jp-left-stack,
+.jp-mod-presentationMode #jp-right-stack,
+.jp-mod-presentationMode .jp-Placeholder-content,
+.jp-mod-presentationMode .jp-NotebookPanel-toolbar,
+.jp-mod-presentationMode .lm-DockPanel-tabBar.jp-Activity {
+  opacity: 0.1;
+  transition: opacity 0.2s;
+}
+
+/* bring some stuff back if hovered */
+.jp-mod-presentationMode .jp-SideBar:hover,
+.jp-mod-presentationMode #jp-MainMenu:hover,
+.jp-mod-presentationMode #jp-top-panel:hover,
+.jp-mod-presentationMode #jp-menu-panel:hover,
+.jp-mod-presentationMode #jp-left-stack:hover,
+.jp-mod-presentationMode #jp-right-stack:hover,
+.jp-mod-presentationMode #jp-bottom-panel:hover,
+.jp-mod-presentationMode .jp-Placeholder-content:hover,
+.jp-mod-presentationMode .jp-NotebookPanel-toolbar:hover,
+.jp-mod-presentationMode .lm-DockPanel-tabBar.jp-Activity:hover {
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+/* just clobber these */
+.jp-mod-presentationMode .jp-InputPrompt,
+.jp-mod-presentationMode .jp-OutputPrompt {
+  display: none;
+}
+
+.jp-mod-presentationMode,
+.jp-mod-presentationMode .lm-TabBar-content {
+  background-color: var(--jp-layout-color0);
+}
+
+/* single document mode overloads */
+.jp-mod-presentationMode[data-shell-mode='single-document'] #jp-top-panel {
+  background-color: var(--jp-layout-color0);
+}
+
+.jp-mod-presentationMode[data-shell-mode='single-document'] #jp-top-panel {
+  opacity: 1;
+  min-height: 52px;
+  height: 52px;
+  align-items: center;
+}
+
+.jp-mod-presentationMode[data-shell-mode='single-document'] #jp-MainLogo {
+  background-size: 36px;
+  height: 48px;
+  width: 48px;
+  margin-left: 8px;
+}
+
+.jp-mod-presentationMode[data-shell-mode='single-document'] #jp-title-panel-title {
+  height: 100%;
+}
+
+.jp-mod-presentationMode[data-shell-mode='single-document'] #jp-title-panel-title h1 {
+  font-size: 36px;
+  color: var(--jp-brand-color1);
+  padding-top: 12px;
+}
+
+.jp-mod-presentationMode {
+  --jp-notebook-scroll-padding: 0;
+}
+
+.jp-mod-presentationMode .lm-DockPanel-widget {
+  border-color: transparent;
+}

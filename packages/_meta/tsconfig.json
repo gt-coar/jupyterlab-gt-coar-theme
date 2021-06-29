@@ -1,0 +1,19 @@
+{
+  "extends": "../../tsconfigbase",
+  "compilerOptions": {
+    "outDir": "./lib",
+    "rootDir": "./src"
+  },
+  "include": ["./**/*"],
+  "references": [
+    {
+      "path": "../light"
+    },
+    {
+      "path": "../dark"
+    },
+    {
+      "path": "../brand"
+    }
+  ]
+}

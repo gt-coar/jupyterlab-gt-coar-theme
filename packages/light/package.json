@@ -1,0 +1,74 @@
+{
+  "name": "@gt-coar/jupyterlab-theme-light",
+  "version": "0.3.0",
+  "description": "an unofficial Georgia Tech theme for JupyterLab",
+  "license": "BSD-3-Clause",
+  "author": "jupyterlab-gt-coar-theme contributors <coar@gaetch.edu>",
+  "homepage": "https://github.com/gt-coar/jupyterlab-gt-coar-theme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gt-coar/jupyterlab-gt-coar-theme"
+  },
+  "bugs": {
+    "url": "https://github.com/gt-coar/jupyterlab-gt-coar-theme/issues"
+  },
+  "main": "lib/index.js",
+  "files": [
+    "{lib,style,src}/**/*.{.ts,eot,gif,html,jpg,js,js.map,json,png,svg,woff2,ttf,css}"
+  ],
+  "scripts": {
+    "build:ext": "jupyter labextension build --debug .",
+    "watch:ext": "jupyter labextension watch --debug ."
+  },
+  "sideEffects": [
+    "style/*.css"
+  ],
+  "types": "lib/index.d.ts",
+  "dependencies": {
+    "@gt-coar/jupyterlab-theme-brand": "^0.3.0"
+  },
+  "devDependencies": {
+    "@jupyterlab/builder": "^3.0.2",
+    "base64-inline-loader": "^1.1.1"
+  },
+  "keywords": [
+    "georgia-tech",
+    "jupyter",
+    "jupyterlab",
+    "jupyterlab-extension"
+  ],
+  "jupyterlab": {
+    "themePath": "style/index.css",
+    "extension": "lib/plugin.js",
+    "discovery": {
+      "server": {
+        "base": {
+          "name": "jupyterlab-gt-coar-theme"
+        },
+        "managers": [
+          "pip",
+          "conda"
+        ]
+      }
+    },
+    "sharedPackages": {
+      "@gt-coar/jupyterlab-theme-brand": {
+        "bundled": false,
+        "singleton": true
+      },
+      "@fontsource/roboto": {
+        "bundled": false,
+        "singleton": true
+      },
+      "@fontsource/roboto-mono": {
+        "bundled": false,
+        "singleton": true
+      },
+      "@fontsource/roboto-slab": {
+        "bundled": false,
+        "singleton": true
+      }
+    },
+    "outputDir": "../../py_src/jupyterlab_gt_coar_theme/labextensions/light"
+  }
+}

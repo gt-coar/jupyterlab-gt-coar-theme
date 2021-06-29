@@ -36,12 +36,8 @@ def task_setup():
     yield dict(
         name="js",
         doc="ensure local npm dependencies",
-        uptodate=[
-            tools.config_changed(
-                dict({k: D.PKG[k] for k in D.PKG if "dependencies" in k.lower()})
-            )
-        ],
-        actions=[["jlpm", "--prefer-offline"]],
+        uptodate=[tools.config_changed(U.pkg_deps(P.PKG_JSONS))],
+        actions=[[*C.JLPM, "--prefer-offline"], [*C.LERNA, "bootstrap"]],
         targets=[P.YARN_INTEGRITY],
     )
 
@@ -50,42 +46,45 @@ def task_build():
     """build intermediate artifacts"""
     yield dict(
         name="lib",
-        doc="build the js lib",
-        file_dep=[P.YARN_INTEGRITY, *P.ALL_TS_SRC, P.PKG_JSON, P.TSCONFIG],
-        actions=[["jlpm", "build:lib"]],
-        targets=[P.TSBUILD, P.PLUGIN_JS],
+        doc="build the js libs",
+        file_dep=[P.YARN_INTEGRITY, *P.ALL_TS_SRC, *P.PKG_JSONS, *P.TSCONFIGS],
+        actions=[[*C.JLPM, "build:lib"]],
+        targets=[P.TSBUILD],
     )
 
     yield dict(
         name="ext",
         doc="build the federated labextension",
-        actions=[[*C.LAB_EXT, "build", "--debug", "."]],
+        actions=[[*C.JLPM, "build:ext"]],
         file_dep=[P.TSBUILD, *P.ALL_STYLE],
-        targets=[P.EXT_PKG],
+        targets=[*B.EXT_PKGS],
     )
 
 
 def task_dist():
     """build artifacts for distribution"""
-    yield dict(
-        name="tgz",
-        doc="build the npm distribution",
-        file_dep=[P.TSBUILD, *P.ALL_STYLE, P.PKG_JSON, P.README, P.LICENSE],
-        actions=[
-            (tools.create_folder, [P.DIST]),
-            tools.CmdAction([*C.NPM_PACK, ".."], cwd=P.DIST, shell=False),
-        ],
-        targets=[D.NPM_TGZ],
-    )
+    for variant, tgz in B.NPM_TGZS.items():
+        yield dict(
+            name=f"tgz:{variant}",
+            doc=f"build the {variant} npm distribution",
+            file_dep=[P.TSBUILD, *P.ALL_STYLE, *P.PKG_JSONS, *P.READMES, *P.LICENSES],
+            actions=[
+                (tools.create_folder, [P.DIST]),
+                tools.CmdAction(
+                    [*C.NPM_PACK, P.PACKAGES / variant], cwd=P.DIST, shell=False
+                ),
+            ],
+            targets=[tgz],
+        )
 
-    for cmd, dist in D.PY_DIST_CMD.items():
+    for cmd, dist in B.PY_DIST_CMD.items():
         yield dict(
             name=cmd,
             doc=f"build the python {cmd}",
             actions=[[*C.SETUP, cmd], [*C.TWINE_CHECK, dist]],
             file_dep=[
                 *P.ALL_PY_SRC,
-                P.EXT_PKG,
+                *B.EXT_PKGS,
                 P.README,
                 P.LICENSE,
                 P.MANIFEST,
@@ -102,7 +101,7 @@ def task_dist():
 
         lines = []
 
-        for p in D.HASH_DEPS:
+        for p in B.HASH_DEPS:
             if p.parent != P.DIST:
                 tgt = P.DIST / p.name
                 if tgt.exists():
@@ -118,7 +117,7 @@ def task_dist():
         name="hash",
         doc="make a hash bundle of the dist artifacts",
         actions=[_run_hash],
-        file_dep=D.HASH_DEPS,
+        file_dep=B.HASH_DEPS,
         targets=[P.SHA256SUMS],
     )
 
@@ -138,7 +137,7 @@ def task_dev():
                 "--ignore-installed",
             ]
         ],
-        file_dep=[P.EXT_PKG],
+        file_dep=[*B.EXT_PKGS],
     )
 
     yield dict(
@@ -165,8 +164,8 @@ def task_watch():
         watchers = [
             subprocess.Popen(args)
             for args in [
-                ["jlpm", "watch:lib"],
-                [*C.LAB_EXT, "watch", "."],
+                [*C.JLPM, "watch:lib"],
+                [*C.JLPM, "watch:ext"],
             ]
         ]
 
@@ -206,16 +205,16 @@ def task_lint():
         name="prettier",
         doc="format things with prettier",
         file_dep=[*P.ALL_PRETTIER, P.YARN_INTEGRITY],
-        actions=[["jlpm", "--silent", "lint"]],
+        actions=[[*C.JLPM, "--silent", "lint"]],
     )
 
     def _header(path):
         def _check():
             any_text = path.read_text()
             problems = []
-            if D.COPYRIGHT not in any_text:
+            if C.COPYRIGHT not in any_text:
                 problems += [f"{path.relative_to(P.ROOT)} missing copyright info"]
-            if path != P.LICENSE and D.LICENSE not in any_text:
+            if path != P.LICENSE and C.LICENSE not in any_text:
                 problems += [f"{path.relative_to(P.ROOT)} missing license info"]
             if problems:
                 print("\n".join(problems))
@@ -233,10 +232,50 @@ def task_lint():
         )
 
 
-class PU:
-    @classmethod
-    def clean(cls, paths):
+class C:
+    """commands and constants"""
+
+    PYM = ["python", "-m"]
+    PIP = [*PYM, "pip"]
+    JP = ["jupyter"]
+    LAB_EXT = [*JP, "labextension"]
+    LAB = [*JP, "lab"]
+    SETUP = ["python", "setup.py"]
+    NPM_PACK = ["npm", "pack"]
+    TWINE_CHECK = [*PYM, "twine", "check"]
+    JLPM = ["jlpm"]
+    LERNA = [*JLPM, "lerna"]
+    ENC = dict(encoding="utf-8")
+
+    # the first one will be used for various metadata tasks
+    VARIANTS = ["dark", "light"]
+
+    JS_TGZ_PREFIX = "gt-coar-jupyterlab-theme"
+    PY_NAME = "jupyterlab-gt-coar-theme"
+
+    # this line is very long, should end with "contributors," but close enough
+    COPYRIGHT = (
+        "Copyright (c) {} "
+        "University System of Georgia and jupyterlab-gt-coar-theme".format(
+            datetime.now().year
+        )
+    )
+    LICENSE = "Distributed under the terms of the BSD-3-Clause License."
+
+
+class U:
+    @staticmethod
+    def clean(paths):
         return [p for p in paths if "checkpoints" not in str(p)]
+
+    @staticmethod
+    def pkg_deps(pkg_jsons):
+        deps = {}
+        for pkg_json in pkg_jsons:
+            pkg = json.loads(pkg_json.read_text(**C.ENC))
+            for key in ["dependencies", "devDependencies", "peerDependencies"]:
+                deps.update(pkg.get(key, {}))
+        return deps
 
 
 class P:
@@ -255,28 +294,38 @@ class P:
     SETUP_CFG = ROOT / "setup.cfg"
     MANIFEST = ROOT / "MANIFEST.in"
 
-    PKG_JSON = ROOT / "package.json"
-    TSCONFIG = ROOT / "tsconfig.json"
-    TSBUILD = BUILD / "tsconfig.tsbuildinfo"
-    PY_SRC = ROOT / "py_src/jupyterlab_gt_coar_theme"
-    EXT_DIST = PY_SRC / "labextension"
-    EXT_PKG = EXT_DIST / "package.json"
-    TS_SRC = ROOT / "src"
-    STYLE = ROOT / "style"
+    PACKAGES = ROOT / "packages"
+    META = PACKAGES / "_meta"
+    META_PKG_JSON = META / "package.json"
 
-    ALL_TS_SRC = sorted(TS_SRC.rglob("*.ts"))
+    PKG_JSON = ROOT / "package.json"
+    A_PKG_JSON = PACKAGES / f"{C.VARIANTS[0]}/package.json"
+    PKG_JSONS = [PKG_JSON, *PACKAGES.glob("*/package.json")]
+    TSCONFIG = ROOT / "tsconfigbase.json"
+    TSCONFIGS = [TSCONFIG, *PACKAGES.glob("*/tsconfig.json")]
+    TSBUILD = META / "tsconfig.tsbuildinfo"
+    PY_SRC = ROOT / "py_src/jupyterlab_gt_coar_theme"
+    EXT_DIST = PY_SRC / "labextensions"
+
+    ALL_TS_SRC = sorted(PACKAGES.glob("*/src/*.ts"))
     ALL_PY_SRC = sorted(PY_SRC.rglob("*.py"))
     ALL_PY = [*ALL_PY_SRC, DODO]
-    ALL_CSS = [*STYLE.rglob("*.css")]
-    ALL_JSON = [*ROOT.glob("*.json"), *BINDER.rglob("*.json")]
+    ALL_CSS = [*PACKAGES.rglob("*/style/**/*.css")]
+    ALL_JSON = [
+        *ROOT.glob("*.json"),
+        *PACKAGES.glob("*/*.json"),
+        *BINDER.rglob("*.json"),
+    ]
     README = ROOT / "README.md"
+    READMES = [README, *PACKAGES.glob("*/README.md")]
     LICENSE = ROOT / "LICENSE.txt"
-    ALL_MD = sorted(ROOT.glob("*.md"))
-    ALL_STYLE = [*ALL_CSS, *STYLE.rglob("*.svg")]
+    LICENSES = [LICENSE, *PACKAGES.glob("*/LICENSE.txt")]
+    ALL_MD = sorted([*ROOT.glob("*.md"), *PACKAGES.glob("*.md")])
+    ALL_STYLE = [*ALL_CSS, *PACKAGES.rglob("*/style/**/*.svg")]
     ALL_YAML = [*CI.rglob("*.yml"), *BINDER.glob("*.yml")]
-    ALL_PRETTIER = [*ALL_MD, *ALL_STYLE, *ALL_JSON, *ALL_YAML]
+    ALL_PRETTIER = [*ALL_MD, *ALL_STYLE, *ALL_JSON, *ALL_YAML, *ALL_TS_SRC]
     ALL_SHELL = [BINDER / "postBuild"]
-    ALL_HEADERS = PU.clean(
+    ALL_HEADERS = U.clean(
         [
             *ALL_PY,
             *ALL_CSS,
@@ -300,38 +349,20 @@ class P:
 class D:
     """data"""
 
-    PKG = json.loads(P.PKG_JSON.read_text(encoding="utf-8"))
-    PY_NAME = PKG["jupyterlab"]["discovery"]["server"]["base"]["name"]
-    SDIST = P.DIST / ("{}-{}.tar.gz".format(PY_NAME, PKG["version"]))
+    PKG = json.loads(P.A_PKG_JSON.read_text(encoding="utf-8"))
+
+
+class B:
+    """builds"""
+
+    EXT_PKGS = [P.EXT_DIST / f"{v}/package.json" for v in C.VARIANTS]
+    NPM_TGZS = {
+        v: P.DIST / ("{}-{}-{}.tgz".format(C.JS_TGZ_PREFIX, v, D.PKG["version"]))
+        for v in [*C.VARIANTS, "brand"]
+    }
+    SDIST = P.DIST / ("{}-{}.tar.gz".format(C.PY_NAME, D.PKG["version"]))
     WHEEL = P.DIST / (
-        "{}-{}-py3-none-any.whl".format(PY_NAME.replace("-", "_"), PKG["version"])
+        "{}-{}-py3-none-any.whl".format(C.PY_NAME.replace("-", "_"), D.PKG["version"])
     )
+    HASH_DEPS = [WHEEL, SDIST, *NPM_TGZS.values()]
     PY_DIST_CMD = {"sdist": SDIST, "bdist_wheel": WHEEL}
-    NPM_TGZ = P.DIST / (
-        "{}-{}.tgz".format(
-            PKG["name"].replace("@", "").replace("/", "-"), PKG["version"]
-        )
-    )
-    HASH_DEPS = [WHEEL, SDIST, NPM_TGZ]
-
-    # this line is very long, should end with "contributors," but close enough
-    COPYRIGHT = (
-        "Copyright (c) {} "
-        "University System of Georgia and jupyterlab-gt-coar-theme".format(
-            datetime.now().year
-        )
-    )
-    LICENSE = "Distributed under the terms of the BSD-3-Clause License."
-
-
-class C:
-    """commands"""
-
-    PYM = ["python", "-m"]
-    PIP = [*PYM, "pip"]
-    JP = ["jupyter"]
-    LAB_EXT = [*JP, "labextension"]
-    LAB = [*JP, "lab"]
-    SETUP = ["python", "setup.py"]
-    NPM_PACK = ["npm", "pack"]
-    TWINE_CHECK = [*PYM, "twine", "check"]

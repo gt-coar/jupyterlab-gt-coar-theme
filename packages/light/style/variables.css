@@ -1,0 +1,107 @@
+/*
+  Copyright (c) 2021 University System of Georgia and jupyterlab-gt-coar-theme contributors
+| Distributed under the terms of the BSD-3-Clause License.
+*/
+
+:root {
+  --jp-accent-color0: var(--md-green-900);
+  --jp-accent-color1: var(--md-green-700);
+  --jp-border-color0: var(--md-grey-400);
+  --jp-border-color1: var(--md-grey-400);
+  --jp-border-color2: var(--md-grey-300);
+  --jp-border-color3: var(--md-grey-200);
+  --jp-brand-color0: var(--md-blue-900);
+  --jp-brand-color1: var(--md-blue-700);
+  --jp-cell-editor-background: var(--md-grey-100);
+  --jp-cell-editor-border-color: var(--md-grey-300);
+  --jp-cell-prompt-not-active-font-color: var(--md-grey-700);
+  --jp-cell-prompt-not-active-opacity: 0.5;
+  --jp-content-font-color0: rgba(0, 0, 0, 1);
+  --jp-content-font-color1: rgba(0, 0, 0, 0.87);
+  --jp-content-font-color2: rgba(0, 0, 0, 0.54);
+  --jp-content-font-color3: rgba(0, 0, 0, 0.38);
+  --jp-content-link-color: var(--md-blue-700);
+  --jp-dialog-background: rgba(0, 0, 0, 0.25);
+  --jp-editor-selected-background: #d9d9d9;
+  --jp-editor-selected-focused-background: #d7d4f0;
+  --jp-error-color0: var(--md-red-900);
+  --jp-error-color1: var(--md-red-700);
+  --jp-info-color0: var(--md-cyan-900);
+  --jp-info-color1: var(--md-cyan-700);
+  --jp-input-active-background: var(--jp-layout-color1);
+  --jp-input-background: var(--md-grey-100);
+  --jp-input-hover-background: var(--jp-layout-color1);
+  --jp-inverse-layout-color0: #111111;
+  --jp-inverse-layout-color1: var(--md-grey-900);
+  --jp-inverse-layout-color2: var(--md-grey-800);
+  --jp-inverse-layout-color3: var(--md-grey-700);
+  --jp-layout-color0: white;
+  --jp-layout-color1: white;
+  --jp-layout-color2: var(--md-grey-200);
+  --jp-layout-color3: var(--md-grey-400);
+  --jp-mirror-editor-atom-color: #88f;
+  --jp-mirror-editor-attribute-color: #00c;
+  --jp-mirror-editor-builtin-color: #008000;
+  --jp-mirror-editor-def-color: #00f;
+  --jp-mirror-editor-header-color: blue;
+  --jp-mirror-editor-keyword-color: #008000;
+  --jp-mirror-editor-link-color: #00c;
+  --jp-mirror-editor-number-color: #080;
+  --jp-mirror-editor-property-color: #05a;
+  --jp-mirror-editor-punctuation-color: #05a;
+  --jp-mirror-editor-quote-color: #090;
+  --jp-mirror-editor-string-2-color: #708;
+  --jp-mirror-editor-string-color: #ba2121;
+  --jp-mirror-editor-tag-color: #170;
+  --jp-mirror-editor-variable-2-color: #05a;
+  --jp-mirror-editor-variable-3-color: #085;
+  --jp-mirror-editor-variable-color: var(--md-grey-900);
+  --jp-notebook-multiselected-color: var(--md-blue-50);
+  --jp-rendermime-error-background: #fdd;
+  --jp-rendermime-table-row-background: var(--md-grey-100);
+  --jp-rendermime-table-row-hover-background: var(--md-light-blue-50);
+  --jp-search-selected-match-background-color: rgb(245, 200, 0);
+  --jp-search-toggle-off-opacity: 0.5;
+  --jp-shadow-base-lightness: 0;
+  --jp-success-color0: var(--md-green-900);
+  --jp-success-color1: var(--md-green-700);
+  --jp-toolbar-active-background: var(--md-grey-300);
+  --jp-toolbar-border-color: var(--jp-border-color1);
+  --jp-toolbar-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.24);
+  --jp-ui-font-color0: rgba(0, 0, 0, 1);
+  --jp-ui-font-color1: rgba(0, 0, 0, 0.87);
+  --jp-ui-font-color2: rgba(0, 0, 0, 0.54);
+  --jp-ui-font-color3: rgba(0, 0, 0, 0.38);
+  --jp-ui-inverse-font-color0: rgba(255, 255, 255, 1);
+  --jp-ui-inverse-font-color1: rgba(255, 255, 255, 1);
+  --jp-ui-inverse-font-color2: rgba(255, 255, 255, 0.7);
+  --jp-ui-inverse-font-color3: rgba(255, 255, 255, 0.5);
+  --jp-vega-background: white;
+  --jp-warn-color0: var(--md-orange-900);
+  --jp-warn-color1: var(--md-orange-700);
+  --jp-brand-color0: var(--gt-blue) !important;
+  --jp-brand-color1: var(--gt-blue-link) !important;
+  --jp-layout-color0: var(--gt-white);
+  --jp-layout-color1: var(--gt-white);
+  --jp-layout-color2: var(--gt-superlight-grey);
+  --jp-layout-color3: var(--gt-light-grey);
+  --jp-warn-color0: var(--gt-tertiary-horizon);
+  --jp-icon-contrast-color0: var(--gt-tertiary-the-whistle);
+
+  /* ui */
+  --jp-input-box-shadow: inset 0 0 2px var(--gt-gold-buzz);
+  --jp-cell-editor-box-shadow: var(--jp-input-box-shadow);
+
+  /* code */
+  --jp-mirror-editor-header-color: var(--gt-blue);
+  --jp-mirror-editor-keyword-color: var(--gt-tertiary-bobby-jones);
+  --jp-mirror-editor-def-color: var(--gt-blue-link);
+  --jp-mirror-editor-error-color: var(--thwg);
+  --jp-mirror-editor-quote-color: var(--gt-tertiary-bobby-jones);
+  --jp-mirror-editor-comment-color: var(--gt-tertiary-tower-patina);
+
+  /* content */
+  --gtc-header-color: var(--gt-blue);
+  --gtc-widgets-label-color: var(--gt-tertiary-tower-patina);
+  --gtc-running-color: var(--gt-blue);
+}

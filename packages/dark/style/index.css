@@ -1,0 +1,80 @@
+/*
+  Copyright (c) 2021 University System of Georgia and jupyterlab-gt-coar-theme contributors
+| Distributed under the terms of the BSD-3-Clause License.
+*/
+
+@import '~@gt-coar/jupyterlab-theme-brand/style/index.css';
+@import './variables.css';
+
+body {
+  background-color: var(--jp-layout-color0);
+}
+
+/* tabs */
+
+.lm-DockPanel-tabBar .lm-TabBar-tab.lm-mod-current {
+  background-color: var(--jp-layout-color0);
+}
+
+.lm-DockPanel-tabBar .lm-TabBar-tab.lm-mod-current.jp-mod-active {
+  font-weight: 700;
+}
+
+/* buttons */
+
+button.jp-mod-styled.jp-mod-accept {
+  background-color: var(--jp-brand-color1);
+  color: var(--gt-blue-80);
+}
+
+button.jp-mod-styled.jp-mod-accept:hover,
+button.jp-mod-styled.jp-mod-accept:active {
+  background-color: var(--jp-brand-color1);
+  color: var(--jp-layout-color0);
+}
+
+/* menu */
+#jp-title-panel-title h1 {
+  color: var(--jp-brand-color1);
+}
+
+.lm-MenuBar-item.lm-mod-active {
+  background-color: var(--jp-brand-color1);
+  color: var(--jp-layout-color0);
+}
+
+.lm-MenuBar.lm-mod-active .lm-MenuBar-item.lm-mod-active {
+  background-color: var(--jp-brand-color1);
+  color: var(--jp-layout-color0);
+  border-color: transparent;
+}
+
+.lm-TabBar-tab.p-TabBar-tab {
+  border: 0;
+}
+
+/* notebook */
+
+.jp-Notebook.jp-mod-editMode .jp-Cell.jp-mod-active .jp-InputArea-editor,
+.jp-InputArea-editor {
+  border: 0;
+}
+
+/* completer */
+
+.jp-Completer-item.jp-mod-active {
+  color: var(--jp-layout-color0);
+  font-weight: 700;
+}
+
+/* retro */
+#top-panel-wrapper h1 {
+  color: var(--gt-gold-buzz);
+}
+
+/* ipyelk */
+:root {
+  --jp-elk-edge-stroke: var(--gt-md-grey);
+  --jp-elk-node-stroke: var(--gt-mddk-grey);
+  --jp-elk-port-stroke: var(--gt-mddk-grey);
+}
