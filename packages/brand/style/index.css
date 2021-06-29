@@ -345,9 +345,11 @@ input.add-tag {
 }
 
 /* bqplot */
- {
+[data-jp-theme-light='false'],
+[data-jp-theme-light='true'] {
   --bq-axislabel-font: 16px var(--gt-font-primary);
   --bq-axislabel-font-size: 16px;
+  --bq-content-font-color: var(--gtc-widgets-label-color);
   --bq-font: 14px var(--gt-font-secondary);
   --bq-font-size: 14px;
   --bq-mainheading-font-size: 18px;
@@ -360,7 +362,7 @@ input.add-tag {
 }
 
 /* retro */
-#jp-jp-RetroLogo svg {
+#jp-RetroLogo svg {
   opacity: 0;
   max-width: 2em;
 }

@@ -71,3 +71,10 @@ button.jp-mod-styled.jp-mod-accept:active {
 #top-panel-wrapper h1 {
   color: var(--gt-gold-buzz);
 }
+
+/* ipyelk */
+:root {
+  --jp-elk-edge-stroke: var(--gt-md-grey);
+  --jp-elk-node-stroke: var(--gt-mddk-grey);
+  --jp-elk-port-stroke: var(--gt-mddk-grey);
+}

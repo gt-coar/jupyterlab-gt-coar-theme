@@ -12,31 +12,27 @@ cp -r .binder/user-settings ~/.jupyter/lab/
 jupyter labextension uninstall --no-build jupyter-offlinenotebook || echo "ok"
 jupyter labextension list
 
-git clone https://github.com/jupyrdf/ipyelk
-
 mkdir examples
 
+git clone https://github.com/jupyrdf/ipyelk
 pushd ipyelk
     git checkout v1.0.0
     cp -r examples ../examples/ipyelk
 popd
 
 git clone https://github.com/bqplot/bqplot
-
 pushd bqplot
     git checkout 0.12.29
     cp -r examples ../examples/bqplot
 popd
 
 git clone https://github.com/deathbeds/wxyz
-
 pushd wxyz
     git checkout v0.5.1
     cp -r src/wxyz_notebooks/src/wxyz/notebooks ../examples/wxyz
 popd
 
 git clone https://github.com/robots-from-jupyter/robotkernel
-
 pushd robotkernel
     git checkout 1.5.0
     cp -r examples ../examples/robotkernel
