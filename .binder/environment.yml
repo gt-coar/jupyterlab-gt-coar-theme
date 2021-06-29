@@ -38,9 +38,10 @@ dependencies:
   - pandas
   - python-lsp-server
   - retrolab
+  - robotframework >=4
   - robotframework-lsp
   - robotframework-seleniumlibrary
-  - robotkernel
+  - robotkernel >=1.5
   - wxyz_datagrid
   - wxyz_dvcs
   - wxyz_json_e
